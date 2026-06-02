@@ -544,7 +544,8 @@
         }
       },
       "settings": {
-        "header_wrapper_drop_shadow": "sm"
+        "header_wrapper_drop_shadow": "sm",
+        "customer_account_menu": "customer-account-main-menu"
       }
     }
   },

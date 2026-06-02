@@ -1,0 +1,23 @@
+/*
+ * Hero section CSS overrides
+ *
+ * The hero schema padding-block range is 0–100px (step 1), but Figma
+ * specifies 112px vertical padding and a 667px min-height on desktop.
+ * These overrides compensate for that limitation.
+ *
+ * NOTE: If the merchant later adjusts padding via the theme editor,
+ * these CSS overrides will take precedence. Remove or update this file
+ * if the merchant needs full editor control over hero padding.
+ */
+
+.hero-wrapper {
+  min-height: 667px;
+  padding-block: 112px !important; /* Figma: 112px top/bottom, schema max is 100px */
+}
+
+@media screen and (max-width: 749px) {
+  .hero-wrapper {
+    min-height: auto;
+    padding-block: 40px !important;
+  }
+}
