@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "main-blog",
@@ -21,12 +21,6 @@
             "max_width": "narrow",
             "alignment": "left",
             "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
             "color": "",
             "background": false,
             "background_color": "#00000026",
@@ -51,10 +45,7 @@
               "static": true,
               "settings": {
                 "type_preset": "h4",
-                "font": "var(--font-primary--family)",
                 "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
                 "color": "",

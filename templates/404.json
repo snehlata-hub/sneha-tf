@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "main-404",
@@ -21,12 +21,6 @@
             "max_width": "normal",
             "alignment": "center",
             "type_preset": "h3",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
             "color": "",
             "background": false,
             "background_color": "#00000026",
@@ -47,12 +41,6 @@
             "max_width": "normal",
             "alignment": "center",
             "type_preset": "rte",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
             "color": "",
             "background": false,
             "background_color": "#00000026",
@@ -142,12 +130,6 @@
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "h4",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
                 "color": "",
                 "background": false,
                 "background_color": "#00000026",
@@ -168,19 +150,7 @@
           "type": "_product-card",
           "name": "t:names.product_card",
           "static": true,
-          "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
+          "settings": {},
           "blocks": {
             "product_card_gallery_wxYqE3": {
               "type": "_product-card-gallery",
@@ -205,13 +175,7 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
+                "type_preset": "rte",
                 "color": "var(--color-foreground)",
                 "background": false,
                 "background_color": "#00000026",
@@ -233,10 +197,7 @@
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",
-                "font": "var(--font-body--family)",
                 "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
                 "case": "none",
                 "color": "var(--color-foreground)",
                 "padding-block-start": 0,
@@ -254,7 +215,7 @@
           ]
         }
       },
-      "name": "t:names.featured_collection",
+      "name": "Featured collection",
       "settings": {
         "collection": "all",
         "layout_type": "grid",

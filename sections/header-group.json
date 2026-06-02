@@ -9,7 +9,7 @@
  */
 {
   "type": "header",
-  "name": "t:names.header",
+  "name": "Header",
   "sections": {
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
@@ -17,13 +17,33 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "text": "Save Up to 25% Off Select Valentine's Day Gifts! <a href=\"#\" title=\"#\"><span style=\"text-decoration:underline\"><strong>Shop Now</strong></span></a>",
+            "link": "shopify://collections",
+            "type_preset": "label",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "weight": "",
-            "letter_spacing": "normal",
             "case": "none"
+          },
+          "blocks": {}
+        },
+        "header-announcements-links": {
+          "type": "links",
+          "static": true,
+          "settings": {
+            "menu": "top-support-links",
+            "layout_direction": "row",
+            "link_gap": 12,
+            "type_preset": "label",
+            "link_font_weight": "600",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "case": "none",
+            "padding-block-start": 8,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 24
           },
           "blocks": {}
         }
@@ -35,10 +55,10 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
         "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 8,
+        "padding-block-end": 8
       }
     },
     "header_section": {
@@ -54,58 +74,477 @@
           },
           "blocks": {}
         },
-        "header-menu": {
-          "type": "_header-menu",
+        "header-navigation": {
+          "type": "_header-nav",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "header_navigation_item_fEe3aU": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Shop All",
+                "link": "",
+                "submenu": "shop-all",
+                "text_color": "#1d1d1d",
+                "highlight_titles": "Shop All",
+                "highlight_color": "#e10600",
+                "visibility": "desktop"
+              },
+              "blocks": {
+                "header_nav_promo_banner_7RLQpq": {
+                  "type": "_header-nav-promo-banner",
+                  "name": "t:names.nav_promo_banner",
+                  "settings": {
+                    "label": "Save up to 25%",
+                    "title": "<p>Create Your Own Bundle</p>",
+                    "image": "shopify://shop_images/banner_1.jpg",
+                    "link": "shopify://collections"
+                  },
+                  "blocks": {}
+                },
+                "header_nav_promo_banner_4iy9w7": {
+                  "type": "_header-nav-promo-banner",
+                  "name": "t:names.nav_promo_banner",
+                  "settings": {
+                    "label": "Save 15%",
+                    "title": "<p>Most Popular Employee<br/>Appreciation Gifts</p>",
+                    "image": "shopify://shop_images/banner_2.jpg",
+                    "link": "#"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "header_nav_promo_banner_7RLQpq",
+                "header_nav_promo_banner_4iy9w7"
+              ]
+            },
+            "header_navigation_item_rKCdmk": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Occasions",
+                "link": "",
+                "submenu": "occasions",
+                "text_color": "#1d1d1d",
+                "highlight_titles": "Shop All",
+                "highlight_color": "#e10600",
+                "visibility": "mobile"
+              },
+              "blocks": {}
+            },
+            "header_navigation_item_eKNyNb": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Same Day",
+                "link": "shopify://collections",
+                "submenu": "",
+                "icon": "shopify://shop_images/lightning_8725091e-edc1-454b-a0bf-40295056a5b1.svg",
+                "text_color": "#1d1d1d",
+                "highlight_titles": "",
+                "highlight_color": "",
+                "visibility": "both"
+              },
+              "blocks": {}
+            },
+            "header_navigation_item_4zVrkF": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Valentine’s Day",
+                "link": "shopify://collections/all",
+                "submenu": "",
+                "text_color": "#e10600",
+                "highlight_titles": "",
+                "highlight_color": "",
+                "visibility": "both"
+              },
+              "blocks": {}
+            },
+            "header_navigation_item_F3CxRd": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Under $50",
+                "link": "#",
+                "submenu": "",
+                "text_color": "#1d1d1d",
+                "highlight_titles": "",
+                "highlight_color": "",
+                "visibility": "both"
+              },
+              "blocks": {}
+            },
+            "header_navigation_item_eMJy6m": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Create Your Own",
+                "link": "#",
+                "submenu": "",
+                "text_color": "#1d1d1d",
+                "highlight_titles": "",
+                "highlight_color": "",
+                "visibility": "both"
+              },
+              "blocks": {}
+            },
+            "header_navigation_item_NMdQEG": {
+              "type": "_header-navigation-item",
+              "name": "t:names.menu_item",
+              "settings": {
+                "title": "Shop All",
+                "link": "shopify://collections/shop-all",
+                "submenu": "",
+                "text_color": "#1d1d1d",
+                "highlight_titles": "",
+                "highlight_color": "",
+                "visibility": "mobile"
+              },
+              "blocks": {}
+            },
+            "mobile-menu-carousel": {
+              "type": "_mobile-menu-carousel",
+              "static": true,
+              "settings": {
+                "carousel_item_width": 90,
+                "carousel_gap": 8
+              },
+              "blocks": {
+                "mobile_menu_carousel_item_caqcdn": {
+                  "type": "_mobile-menu-carousel-item",
+                  "name": "Mobile Menu Carousel Item",
+                  "settings": {},
+                  "blocks": {
+                    "image_ThyPEi": {
+                      "type": "image",
+                      "name": "t:names.image",
+                      "settings": {
+                        "image": "shopify://shop_images/Product_Flowers.png",
+                        "use_as_background": false,
+                        "link": "https://myedible.myshopify.com/",
+                        "image_ratio": "adapt",
+                        "custom_ratio_width": 1,
+                        "custom_ratio_height": 1,
+                        "image_ratio_mobile": "same",
+                        "custom_ratio_width_mobile": 1,
+                        "custom_ratio_height_mobile": 1,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 8,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_467VUe": {
+                      "type": "text",
+                      "name": "t:names.heading",
+                      "settings": {
+                        "text": "<p>Arrangements</p>",
+                        "enable_read_more": false,
+                        "read_more_label": "Read more",
+                        "read_less_label": "Read less",
+                        "characters_limit": 0,
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "label",
+                        "type_preset_desktop": "",
+                        "weight": "600",
+                        "color": "var(--color-foreground)",
+                        "highlight_color": "var(--color-primary)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "image_ThyPEi",
+                    "text_467VUe"
+                  ]
+                },
+                "mobile_menu_carousel_item_PhpkPz": {
+                  "type": "_mobile-menu-carousel-item",
+                  "name": "Mobile Menu Carousel Item",
+                  "settings": {},
+                  "blocks": {
+                    "image_qVhXdw": {
+                      "type": "image",
+                      "name": "t:names.image",
+                      "settings": {
+                        "image": "shopify://shop_images/Product_Flowers.png",
+                        "use_as_background": false,
+                        "link": "",
+                        "image_ratio": "adapt",
+                        "custom_ratio_width": 1,
+                        "custom_ratio_height": 1,
+                        "image_ratio_mobile": "same",
+                        "custom_ratio_width_mobile": 1,
+                        "custom_ratio_height_mobile": 1,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 8,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_BWgWNp": {
+                      "type": "text",
+                      "name": "t:names.heading",
+                      "settings": {
+                        "text": "<p>Platters & Boards</p>",
+                        "enable_read_more": false,
+                        "read_more_label": "Read more",
+                        "read_less_label": "Read less",
+                        "characters_limit": 0,
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "label",
+                        "type_preset_desktop": "",
+                        "weight": "600",
+                        "color": "var(--color-foreground)",
+                        "highlight_color": "var(--color-primary)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "image_qVhXdw",
+                    "text_BWgWNp"
+                  ]
+                },
+                "mobile_menu_carousel_item_HKy4Qa": {
+                  "type": "_mobile-menu-carousel-item",
+                  "name": "Mobile Menu Carousel Item",
+                  "settings": {},
+                  "blocks": {
+                    "image_Cd6icD": {
+                      "type": "image",
+                      "name": "t:names.image",
+                      "settings": {
+                        "image": "shopify://shop_images/Product_Flowers.png",
+                        "use_as_background": false,
+                        "link": "",
+                        "image_ratio": "adapt",
+                        "custom_ratio_width": 1,
+                        "custom_ratio_height": 1,
+                        "image_ratio_mobile": "same",
+                        "custom_ratio_width_mobile": 1,
+                        "custom_ratio_height_mobile": 1,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 8,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_gdpqC7": {
+                      "type": "text",
+                      "name": "t:names.heading",
+                      "settings": {
+                        "text": "<p>Baked Goods</p>",
+                        "enable_read_more": false,
+                        "read_more_label": "Read more",
+                        "read_less_label": "Read less",
+                        "characters_limit": 0,
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "label",
+                        "type_preset_desktop": "",
+                        "weight": "600",
+                        "color": "var(--color-foreground)",
+                        "highlight_color": "var(--color-primary)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "image_Cd6icD",
+                    "text_gdpqC7"
+                  ]
+                },
+                "mobile_menu_carousel_item_rgQJzE": {
+                  "type": "_mobile-menu-carousel-item",
+                  "name": "Mobile Menu Carousel Item",
+                  "settings": {},
+                  "blocks": {
+                    "image_64HNY9": {
+                      "type": "image",
+                      "name": "t:names.image",
+                      "settings": {
+                        "image": "shopify://shop_images/Product_Flowers.png",
+                        "use_as_background": false,
+                        "link": "",
+                        "image_ratio": "adapt",
+                        "custom_ratio_width": 1,
+                        "custom_ratio_height": 1,
+                        "image_ratio_mobile": "same",
+                        "custom_ratio_width_mobile": 1,
+                        "custom_ratio_height_mobile": 1,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 8,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_Wbz6jf": {
+                      "type": "text",
+                      "name": "t:names.heading",
+                      "settings": {
+                        "text": "<p>Arrangements</p>",
+                        "enable_read_more": false,
+                        "read_more_label": "Read more",
+                        "read_less_label": "Read less",
+                        "characters_limit": 0,
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "label",
+                        "type_preset_desktop": "",
+                        "weight": "600",
+                        "color": "var(--color-foreground)",
+                        "highlight_color": "var(--color-primary)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "image_64HNY9",
+                    "text_Wbz6jf"
+                  ]
+                }
+              },
+              "block_order": [
+                "mobile_menu_carousel_item_caqcdn",
+                "mobile_menu_carousel_item_PhpkPz",
+                "mobile_menu_carousel_item_HKy4Qa",
+                "mobile_menu_carousel_item_rgQJzE"
+              ]
+            },
+            "header-nav-promo-banner": {
+              "type": "_header-nav-promo-banner",
+              "static": true,
+              "settings": {
+                "label": "Save 15%",
+                "title": "<p>Most Popular Employee<br/>Appreciation Gifts</p>",
+                "image": "shopify://shop_images/banner_1.jpg",
+                "link": "#"
+              },
+              "blocks": {}
+            },
+            "mobile-links": {
+              "type": "links",
+              "name": "Mobile Links",
+              "static": true,
+              "settings": {
+                "menu": "top-support-links",
+                "layout_direction": "column",
+                "link_gap": 12,
+                "type_preset": "body-regular",
+                "link_font_weight": "",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "weight": "",
+                "case": "none",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "header_navigation_item_fEe3aU",
+            "header_navigation_item_rKCdmk",
+            "header_navigation_item_eKNyNb",
+            "header_navigation_item_4zVrkF",
+            "header_navigation_item_F3CxRd",
+            "header_navigation_item_eMJy6m",
+            "header_navigation_item_NMdQEG"
+          ]
+        },
+        "search-drawer": {
+          "type": "_search-drawer",
           "static": true,
           "settings": {
-            "menu": "main-menu",
-            "color_scheme": "",
-            "type_font_primary_size": "0.875rem",
-            "menu_font_style": "inverse",
-            "type_font_primary_link": "body",
-            "type_case_primary_link": "none",
-            "menu_style": "featured_products",
-            "featured_products_aspect_ratio": "4 / 5",
-            "featured_collections_aspect_ratio": "16 / 9",
-            "image_border_radius": 0,
-            "navigation_bar": false,
-            "color_scheme_navigation_bar": "",
-            "drawer_accordion": false,
-            "drawer_accordion_expand_first": false,
-            "drawer_dividers": false
+            "title": "Bestseller",
+            "collection": "frontpage",
+            "top_searchs": "one, two, three"
           },
           "blocks": {}
         }
       },
       "settings": {
-        "logo_position": "left",
-        "menu_position": "left",
-        "menu_row": "top",
-        "show_search": true,
-        "search_position": "right",
-        "search_row": "top",
-        "show_country": true,
-        "country_selector_style": false,
-        "show_language": true,
-        "localization_font": "heading",
-        "localization_font_size": "0.875rem",
-        "localization_position": "right",
-        "localization_row": "top",
-        "section_width": "page-width",
-        "section_height": "standard",
-        "enable_sticky_header": "always",
-        "divider_width": 0,
-        "divider_size": "page-width",
-        "border_width": 0,
-        "color_scheme_top": "scheme-1",
-        "color_scheme_bottom": "",
-        "color_scheme_transparent": "scheme-6",
-        "enable_transparent_header_home": false,
-        "home_color_scheme": "inverse",
-        "enable_transparent_header_product": false,
-        "product_color_scheme": "default",
-        "enable_transparent_header_collection": false,
-        "collection_color_scheme": "default"
+        "header_wrapper_drop_shadow": "sm"
       }
     }
   },
