@@ -60,7 +60,43 @@
         }
       },
       "block_order": ["heading", "subheading", "cta_button"]
+    },
+    "promo-cards": {
+      "type": "promo-cards",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "show_divider": true,
+        "divider_color": "#E0E0E0",
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      },
+      "blocks": {
+        "card-birthday": {
+          "type": "promo-card",
+          "settings": {
+            "subtitle": "BIRTHDAY COLLECTION",
+            "heading": "Don't forget to make it sweet",
+            "description": "Send same-day treats they'll love.",
+            "button_text": "Shop Birthday",
+            "background_image": "shopify://shop_images/rectangle-161-mobile-476818149.png",
+            "overlay_color": "#FBF7F5"
+          }
+        },
+        "card-bundle": {
+          "type": "promo-card",
+          "settings": {
+            "subtitle": "BUY MORE, SAVE MORE",
+            "heading": "Get up to 20% off",
+            "description": "Bundle up our best products.",
+            "button_text": "Create Your Bundle",
+            "background_image": "shopify://shop_images/rectangle-161-mobile-476818133.png",
+            "overlay_color": "#F6F6F4"
+          }
+        }
+      },
+      "block_order": ["card-birthday", "card-bundle"]
     }
   },
-  "order": ["hero"]
+  "order": ["hero", "promo-cards"]
 }
