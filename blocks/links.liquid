@@ -1,0 +1,114 @@
+{%- assign nav = linklists[block.settings.menu] -%}
+{%- if nav != blank -%}
+  <nav
+    {{ block.shopify_attributes }}
+    class="links-block"
+    style="
+      display: flex;
+      flex-direction: {{ block.settings.layout_direction | default: 'row' }};
+      gap: {{ block.settings.link_gap }}px;
+      padding-block-start: {{ block.settings.padding-block-start }}px;
+      padding-block-end: {{ block.settings.padding-block-end }}px;
+      padding-inline-start: {{ block.settings.padding-inline-start }}px;
+      padding-inline-end: {{ block.settings.padding-inline-end }}px;
+    "
+  >
+    {%- for link in nav.links -%}
+      <a
+        href="{{ link.url }}"
+        class="links-block__link"
+        style="font-weight: {{ block.settings.link_font_weight }};"
+      >
+        {{ link.title }}
+      </a>
+    {%- endfor -%}
+  </nav>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Links",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "menu",
+      "label": "Menu handle",
+      "default": "main-menu"
+    },
+    {
+      "type": "select",
+      "id": "layout_direction",
+      "label": "Direction",
+      "options": [
+        { "value": "row", "label": "Horizontal" },
+        { "value": "column", "label": "Vertical" }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "number",
+      "id": "link_gap",
+      "label": "Link gap (px)",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "type_preset",
+      "label": "Typography preset",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "link_font_weight",
+      "label": "Font weight",
+      "default": "600"
+    },
+    {
+      "type": "text",
+      "id": "font",
+      "label": "Font family"
+    },
+    {
+      "type": "text",
+      "id": "font_size",
+      "label": "Font size"
+    },
+    {
+      "type": "text",
+      "id": "weight",
+      "label": "Weight"
+    },
+    {
+      "type": "text",
+      "id": "case",
+      "label": "Text transform",
+      "default": "none"
+    },
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

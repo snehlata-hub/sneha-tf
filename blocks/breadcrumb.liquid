@@ -1,0 +1,29 @@
+<nav aria-label="Breadcrumb" {{ block.shopify_attributes }} class="breadcrumb">
+  {%- if template == 'collection' -%}
+    <a href="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ collection.title }}</span>
+  {%- elsif template == 'product' -%}
+    <a href="/">Home</a>
+    {%- if collection -%}
+      <span aria-hidden="true">/</span>
+      <a href="{{ collection.url }}">{{ collection.title }}</a>
+    {%- endif -%}
+    <span aria-hidden="true">/</span>
+    <span>{{ product.title }}</span>
+  {%- elsif template == 'article' -%}
+    <a href="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ blog.url }}">{{ blog.title }}</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ article.title }}</span>
+  {%- endif -%}
+</nav>
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

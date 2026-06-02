@@ -1,0 +1,15 @@
+<div {{ block.shopify_attributes }} class="mobile-menu-carousel-item">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Mobile Menu Carousel Item",
+  "tag": null,
+  "settings": [],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

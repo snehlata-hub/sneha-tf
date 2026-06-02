@@ -1,0 +1,54 @@
+{%- if product.variants.size > 1 -%}
+  <div
+    {{ block.shopify_attributes }}
+    class="product-options-count"
+    style="margin-bottom: {{ block.settings.margin_bottom_mobile }}px;"
+  >
+    {{ product.variants.size }} options
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Options Count",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "typography_mobile",
+      "label": "Mobile typography",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "typography_desktop",
+      "label": "Desktop typography",
+      "default": "body-small"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_mobile",
+      "label": "Mobile font weight",
+      "default": "400"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_desktop",
+      "label": "Desktop font weight",
+      "default": "400"
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_mobile",
+      "label": "Mobile bottom margin",
+      "default": 10
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_desktop",
+      "label": "Desktop bottom margin",
+      "default": 6
+    }
+  ]
+}
+{% endschema %}

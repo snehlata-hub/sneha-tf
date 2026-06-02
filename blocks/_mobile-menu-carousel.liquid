@@ -1,0 +1,31 @@
+<div
+  {{ block.shopify_attributes }}
+  class="mobile-menu-carousel"
+  style="--carousel-item-width: {{ block.settings.carousel_item_width }}px; gap: {{ block.settings.carousel_gap }}px;"
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Mobile Menu Carousel",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "carousel_item_width",
+      "label": "Item width (px)",
+      "default": 90
+    },
+    {
+      "type": "number",
+      "id": "carousel_gap",
+      "label": "Gap (px)",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    { "type": "_mobile-menu-carousel-item" }
+  ]
+}
+{% endschema %}

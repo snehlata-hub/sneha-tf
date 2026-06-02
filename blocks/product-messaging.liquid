@@ -1,0 +1,57 @@
+{%- assign promo_msg = product.metafields.ediblearrangement.promotional_message.value -%}
+{%- assign non_promo_msg = product.metafields.ediblearrangement.non_promotional_message.value -%}
+{%- assign msg = promo_msg | default: non_promo_msg -%}
+{%- if msg != blank -%}
+  <div
+    {{ block.shopify_attributes }}
+    class="product-messaging"
+    style="color: {{ block.settings.color }}; padding-block-start: {{ block.settings.padding-block-start }}px; padding-block-end: {{ block.settings.padding-block-end }}px; padding-inline-start: {{ block.settings.padding-inline-start }}px; padding-inline-end: {{ block.settings.padding-inline-end }}px;"
+  >
+    {{ msg }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product messaging",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "type_preset",
+      "label": "Typography preset",
+      "default": "label"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#e10600"
+    },
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

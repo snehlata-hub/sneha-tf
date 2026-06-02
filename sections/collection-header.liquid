@@ -1,0 +1,71 @@
+<div
+  class="collection-header color-{{ section.settings.color_scheme }}"
+  style="
+    padding-block-start: {{ section.settings.desktop_padding_top }}px;
+    padding-block-end: {{ section.settings.desktop_padding_bottom }}px;
+  "
+>
+  <div class="page-width">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+.collection-header {
+  @media screen and (max-width: 768px) {
+    padding-block-start: var(--mobile-pt, 16px);
+    padding-block-end: var(--mobile-pb, 16px);
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_overlap",
+      "label": "Overlap header",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "mobile_padding_top",
+      "label": "Mobile padding top",
+      "default": 16
+    },
+    {
+      "type": "number",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile padding bottom",
+      "default": 16
+    },
+    {
+      "type": "number",
+      "id": "desktop_padding_top",
+      "label": "Desktop padding top",
+      "default": 48
+    },
+    {
+      "type": "number",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop padding bottom",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ],
+  "presets": [
+    { "name": "Collection Header" }
+  ]
+}
+{% endschema %}

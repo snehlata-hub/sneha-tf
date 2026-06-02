@@ -1,0 +1,62 @@
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- if variant and variant.compare_at_price > variant.price -%}
+  <div
+    {{ block.shopify_attributes }}
+    class="product-discount-info"
+    style="color: {{ block.settings.color }}; margin-bottom: {{ block.settings.margin_bottom_mobile }}px; font-weight: {{ block.settings.font_weight_mobile }};"
+  >
+    {%- assign savings = variant.compare_at_price | minus: variant.price -%}
+    Save {{ savings | money }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Discount Info",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "typography_mobile",
+      "label": "Mobile typography",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "typography_desktop",
+      "label": "Desktop typography",
+      "default": "body-small"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_mobile",
+      "label": "Mobile font weight",
+      "default": "500"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_desktop",
+      "label": "Desktop font weight",
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#a00400"
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_mobile",
+      "label": "Mobile bottom margin",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_desktop",
+      "label": "Desktop bottom margin",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

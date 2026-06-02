@@ -1,0 +1,50 @@
+{%- if block.settings.image != blank or block.settings.title != blank -%}
+  <a
+    {{ block.shopify_attributes }}
+    class="header-nav-promo-banner"
+    href="{{ block.settings.link }}"
+  >
+    {%- if block.settings.image != blank -%}
+      <div class="header-nav-promo-banner__image">
+        {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}
+      </div>
+    {%- endif -%}
+    <div class="header-nav-promo-banner__content">
+      {%- if block.settings.label != blank -%}
+        <span class="header-nav-promo-banner__label">{{ block.settings.label }}</span>
+      {%- endif -%}
+      {%- if block.settings.title != blank -%}
+        <div class="header-nav-promo-banner__title">{{ block.settings.title }}</div>
+      {%- endif -%}
+    </div>
+  </a>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Nav Promo Banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ]
+}
+{% endschema %}

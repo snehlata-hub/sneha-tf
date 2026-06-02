@@ -1,0 +1,45 @@
+{%- assign callouts = product.metafields.ediblearrangement.callouts.value -%}
+{%- if callouts != blank -%}
+  <ul
+    {{ block.shopify_attributes }}
+    class="product-callouts"
+    style="padding-block-start: {{ block.settings.padding-block-start }}px; padding-block-end: {{ block.settings.padding-block-end }}px; padding-inline-start: {{ block.settings.padding-inline-start }}px; padding-inline-end: {{ block.settings.padding-inline-end }}px; list-style: none; margin: 0; padding: 0;"
+  >
+    {%- for callout in callouts -%}
+      <li class="product-callouts__item">{{ callout.text.value }}</li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Callouts",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

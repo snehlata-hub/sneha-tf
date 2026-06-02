@@ -1,0 +1,76 @@
+{%- assign highlights = product.metafields.ediblearrangement.callouts.value -%}
+{%- if highlights != blank -%}
+  <ul
+    {{ block.shopify_attributes }}
+    class="product-message-highlights"
+    style="padding-block-start: {{ block.settings.padding-block-start }}px; padding-block-end: {{ block.settings.padding-block-end }}px; padding-inline-start: {{ block.settings.padding-inline-start }}px; padding-inline-end: {{ block.settings.padding-inline-end }}px; color: {{ block.settings.color }};"
+  >
+    {%- for callout in highlights -%}
+      <li class="product-message-highlights__item">
+        {%- if callout.icon.value != blank -%}
+          <span class="product-message-highlights__icon" style="background-color: {{ block.settings.icon_background_color }};">
+            {{ callout.icon.value | image_url: width: 40 | image_tag: loading: 'lazy', alt: '' }}
+          </span>
+        {%- endif -%}
+        <span style="font-weight: {{ block.settings.weight }};">{{ callout.text.value }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Highlights",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "type_preset",
+      "label": "Typography preset",
+      "default": "body-small"
+    },
+    {
+      "type": "text",
+      "id": "weight",
+      "label": "Font weight",
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#1d1d1d"
+    },
+    {
+      "type": "color",
+      "id": "icon_background_color",
+      "label": "Icon background color",
+      "default": "#f2e7df"
+    },
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

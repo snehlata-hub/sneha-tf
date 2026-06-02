@@ -1,0 +1,51 @@
+<div {{ block.shopify_attributes }} class="faq-accordion">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        { "value": "caret", "label": "Caret" },
+        { "value": "plus", "label": "Plus" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "caret"
+    },
+    {
+      "type": "checkbox",
+      "id": "dividers",
+      "label": "Show dividers",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first item",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "type_preset",
+      "label": "Question typography",
+      "default": "body-regular"
+    },
+    {
+      "type": "text",
+      "id": "content_type_preset",
+      "label": "Answer typography",
+      "default": "body-small"
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

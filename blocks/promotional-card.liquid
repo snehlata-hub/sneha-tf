@@ -1,0 +1,72 @@
+<div
+  {{ block.shopify_attributes }}
+  class="promotional-card color-{{ block.settings.color_scheme }}"
+  style="background-color: {{ block.settings.background_color }}; vertical-align: {{ block.settings.vertical_alignment }}; text-align: {{ block.settings.horizontal_alignment }}; padding: 16px;"
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Promotional Card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "row_index",
+      "label": "Row index",
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "column_index",
+      "label": "Column index",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "column_span",
+      "label": "Column span",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "rgba(0,0,0,0)"
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

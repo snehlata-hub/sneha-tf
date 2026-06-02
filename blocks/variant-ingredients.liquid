@@ -1,0 +1,44 @@
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- assign ingredients = variant.metafields.ediblearrangement.ingredients.value -%}
+{%- if ingredients != blank -%}
+  <div
+    {{ block.shopify_attributes }}
+    class="variant-ingredients"
+    style="padding-block-start: {{ block.settings.padding-block-start }}px; padding-block-end: {{ block.settings.padding-block-end }}px; padding-inline-start: {{ block.settings.padding-inline-start }}px; padding-inline-end: {{ block.settings.padding-inline-end }}px;"
+  >
+    {{ ingredients | metafield_tag }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Variant ingredients",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

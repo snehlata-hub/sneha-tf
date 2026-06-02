@@ -1,0 +1,14 @@
+{%- assign badge = product.metafields.ediblearrangement.badge.value -%}
+{%- if badge != blank -%}
+  <div {{ block.shopify_attributes }} class="product-badge">
+    <span class="product-badge__label">{{ badge }}</span>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Badge",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

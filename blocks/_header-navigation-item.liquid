@@ -1,0 +1,78 @@
+<li
+  {{ block.shopify_attributes }}
+  class="header-nav-item{% if block.settings.visibility == 'desktop' %} header-nav-item--desktop-only{% elsif block.settings.visibility == 'mobile' %} header-nav-item--mobile-only{% endif %}"
+  style="color: {{ block.settings.text_color }};"
+>
+  <a
+    href="{{ block.settings.link | default: '#' }}"
+    class="header-nav-item__link"
+  >
+    {{ block.settings.title }}
+  </a>
+  {%- if block.settings.submenu != blank -%}
+    <div class="header-nav-item__dropdown">
+      {% content_for 'blocks' %}
+    </div>
+  {%- endif -%}
+</li>
+
+{% schema %}
+{
+  "name": "Nav Item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Menu item"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "submenu",
+      "label": "Submenu handle"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon image"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1d1d1d"
+    },
+    {
+      "type": "text",
+      "id": "highlight_titles",
+      "label": "Highlight text"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#e10600"
+    },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "Visibility",
+      "options": [
+        { "value": "both", "label": "Both" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" }
+      ],
+      "default": "both"
+    }
+  ],
+  "blocks": [
+    { "type": "_header-nav-promo-banner" }
+  ]
+}
+{% endschema %}

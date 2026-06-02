@@ -1,0 +1,22 @@
+<div class="collection-viewer">
+  <div class="page-width">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Viewer",
+  "settings": [],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" },
+    { "type": "promotional-card" },
+    { "type": "filters" },
+    { "type": "_product-card" }
+  ],
+  "presets": [
+    { "name": "Collection Viewer" }
+  ]
+}
+{% endschema %}

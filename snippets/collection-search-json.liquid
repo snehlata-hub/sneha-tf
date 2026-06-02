@@ -1,0 +1,74 @@
+{%- liquid
+  assign template_name = template_name | default: 'collection'
+  assign terms = terms | default: null
+  assign collection_data = collection_data | default: collection
+  assign sort_by = sort_by | default: collection_data.sort_by
+  assign default_sort_by = default_sort_by | default: collection_data.default_sort_by
+  assign sort_options = sort_options | default: collection_data.sort_options
+  assign filters = filters | default: collection_data.filters
+  assign items = items | default: collection_data.products
+  assign paginate = paginate | default: nil
+-%}
+{
+  "template": {{ template_name | json }},
+  "terms": {{ terms | json }},
+  "collection": {
+    "id": {{ collection_data.id | json }},
+    "handle": {{ collection_data.handle | json }},
+    "title": {{ collection_data.title | json }},
+    "url": {{ collection_data.url | json }},
+    "products_count": {{ collection_data.products_count | json }}
+  },
+  "sort_by": {{ sort_by | json }},
+  "default_sort_by": {{ default_sort_by | json }},
+  "sort_options": [
+    {%- for option in sort_options -%}
+      { "name": {{ option.name | json }}, "value": {{ option.value | json }} }
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "filters": [
+    {%- for filter in filters -%}
+      {
+        "label": {{ filter.label | json }},
+        "type": {{ filter.type | json }},
+        "url_to_remove": {{ filter.url_to_remove | json }},
+        "active_values": [
+          {%- for value in filter.active_values -%}
+            { "label": {{ value.label | json }}, "count": {{ value.count | json }}, "url_to_add": {{ value.url_to_add | json }}, "url_to_remove": {{ value.url_to_remove | json }} }
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ],
+        "values": [
+          {%- for value in filter.values -%}
+            { "label": {{ value.label | json }}, "count": {{ value.count | json }}, "url_to_add": {{ value.url_to_add | json }}, "url_to_remove": {{ value.url_to_remove | json }}, "active": {{ value.active | json }} }
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "products": [
+    {%- for product in items -%}
+      {
+        "id": {{ product.id | json }},
+        "title": {{ product.title | json }},
+        "handle": {{ product.handle | json }},
+        "url": {{ product.url | json }},
+        "price": {{ product.price | json }},
+        "compare_at_price": {{ product.compare_at_price | json }},
+        "available": {{ product.available | json }},
+        "featured_image": {{ product.featured_image | image_url: width: 800 | json }}
+      }
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+  {%- if paginate != nil -%}
+  , "pagination": {
+    "current_page": {{ paginate.current_page | json }},
+    "pages": {{ paginate.pages | json }},
+    "items": {{ paginate.items | json }}
+  }
+  {%- endif -%}
+}

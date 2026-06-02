@@ -1,0 +1,26 @@
+<div
+  {{ block.shopify_attributes }}
+  class="product-card-atc{% if block.settings.color_scheme != blank %} color-{{ block.settings.color_scheme }}{% endif %}"
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Card ATC",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    { "type": "button" },
+    { "type": "quantity" },
+    { "type": "accelerated-checkout" },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

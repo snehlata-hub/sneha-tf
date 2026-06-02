@@ -1,0 +1,55 @@
+<div
+  {{ block.shopify_attributes }}
+  class="product-price-info"
+  style="margin-bottom: {{ block.settings.margin_bottom_mobile }}px; font-weight: {{ block.settings.font_weight_mobile }};"
+>
+  {%- assign variant = product.selected_or_first_available_variant -%}
+  {%- if variant -%}
+    {{ variant.price | money }}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Product Price Info",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "typography_mobile",
+      "label": "Mobile typography",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "typography_desktop",
+      "label": "Desktop typography",
+      "default": "body-small"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_mobile",
+      "label": "Mobile font weight",
+      "default": "500"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_desktop",
+      "label": "Desktop font weight",
+      "default": "500"
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_mobile",
+      "label": "Mobile bottom margin",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_desktop",
+      "label": "Desktop bottom margin",
+      "default": 6
+    }
+  ]
+}
+{% endschema %}

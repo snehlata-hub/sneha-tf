@@ -1,0 +1,77 @@
+<div
+  {{ block.shopify_attributes }}
+  class="gift-wrap"
+  style="padding-block-start: {{ block.settings.padding-block-start }}px; padding-block-end: {{ block.settings.padding-block-end }}px; padding-inline-start: {{ block.settings.padding-inline-start }}px; padding-inline-end: {{ block.settings.padding-inline-end }}px;"
+>
+  <p style="font-weight: {{ block.settings.heading_weight }}; color: {{ block.settings.heading_color }};">Gift wrap</p>
+  <p style="font-weight: {{ block.settings.text_weight }}; color: {{ block.settings.text_color }};">Add gift wrap to your order</p>
+</div>
+
+{% schema %}
+{
+  "name": "Gift wrap",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_type_preset",
+      "label": "Heading typography",
+      "default": "body-small"
+    },
+    {
+      "type": "text",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1d1d1d"
+    },
+    {
+      "type": "text",
+      "id": "text_type_preset",
+      "label": "Text typography",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "text_weight",
+      "label": "Text weight",
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#e10600"
+    },
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

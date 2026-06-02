@@ -1,0 +1,98 @@
+{%- assign faq_handle = section.settings.faq_metaobject -%}
+{%- assign faq_obj = metaobjects['faq_collection'][faq_handle] -%}
+
+<div
+  class="faq-section{% if section.settings.color_scheme != blank %} color-{{ section.settings.color_scheme }}{% endif %}"
+  style="
+    padding-block-start: {{ section.settings.padding-block-start }}px;
+    padding-block-end: {{ section.settings.padding-block-end }}px;
+  "
+>
+  <div class="{% if section.settings.section_width == 'page-width' %}page-width{% endif %}" style="display: flex; flex-direction: column; gap: {{ section.settings.gap }}px;">
+    {% content_for 'blocks' %}
+
+    {%- if faq_obj != blank and faq_obj.items.value != blank -%}
+      <div class="faq-section__items">
+        {%- for item in faq_obj.items.value -%}
+          <details class="faq-section__item">
+            <summary class="faq-section__question">{{ item.question.value }}</summary>
+            <div class="faq-section__answer">{{ item.answer.value | metafield_tag }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.faq-section__item {
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+  padding-block: 16px;
+}
+.faq-section__question {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+.faq-section__question::-webkit-details-marker { display: none; }
+.faq-section__answer {
+  padding-block-start: 12px;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "faq_metaobject",
+      "label": "FAQ metaobject handle"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "page-width", "label": "Page width" },
+        { "value": "full-width", "label": "Full width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "number",
+      "id": "gap",
+      "label": "Gap",
+      "default": 32
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" },
+    { "type": "_faq-accordion" }
+  ],
+  "presets": [
+    { "name": "FAQ" }
+  ]
+}
+{% endschema %}

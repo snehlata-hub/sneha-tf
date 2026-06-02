@@ -1,0 +1,31 @@
+<div
+  {{ block.shopify_attributes }}
+  class="blog-article-card{% if block.settings.color_scheme != blank %} color-{{ block.settings.color_scheme }}{% endif %}"
+  style="border-radius: {{ block.settings.border_radius }}px; overflow: hidden;"
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Blog Article Card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type": "number",
+      "id": "border_radius",
+      "label": "Border radius",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

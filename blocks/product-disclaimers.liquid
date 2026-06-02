@@ -1,0 +1,23 @@
+{%- assign disclaimers = product.metafields.ediblearrangement.disclaimers.value -%}
+{%- if disclaimers != blank -%}
+  <div {{ block.shopify_attributes }} class="product-disclaimers" style="background-color: {{ block.settings.background_color }}; padding: 12px 16px;">
+    {%- for disclaimer in disclaimers -%}
+      <p class="product-disclaimers__item">{{ disclaimer }}</p>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product disclaimers",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fbf7f5"
+    }
+  ]
+}
+{% endschema %}

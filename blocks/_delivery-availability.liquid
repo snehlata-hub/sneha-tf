@@ -1,0 +1,73 @@
+{%- assign promo_msg = product.metafields.ediblearrangement.promotional_message.value -%}
+{%- assign non_promo_msg = product.metafields.ediblearrangement.non_promotional_message.value -%}
+{%- assign display_msg = promo_msg | default: non_promo_msg -%}
+{%- if display_msg != blank -%}
+  <div
+    {{ block.shopify_attributes }}
+    class="delivery-availability"
+    style="
+      color: {% if promo_msg != blank %}{{ block.settings.color }}{% else %}{{ block.settings.non_promotional_color }}{% endif %};
+      margin-bottom: {{ block.settings.margin_bottom_mobile }}px;
+      font-weight: {{ block.settings.font_weight_mobile }};
+    "
+  >
+    {{ display_msg }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Delivery Availability",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "typography_mobile",
+      "label": "Mobile typography preset",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "typography_desktop",
+      "label": "Desktop typography preset",
+      "default": "label"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_mobile",
+      "label": "Mobile font weight",
+      "default": "500"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_desktop",
+      "label": "Desktop font weight",
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Promotional color",
+      "default": "#1b873d"
+    },
+    {
+      "type": "color",
+      "id": "non_promotional_color",
+      "label": "Non-promotional color",
+      "default": "#e10600"
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_mobile",
+      "label": "Mobile bottom margin",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom_desktop",
+      "label": "Desktop bottom margin",
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

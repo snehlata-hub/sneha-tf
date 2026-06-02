@@ -1,0 +1,50 @@
+{%- assign brand = product.metafields.custom.brand.value -%}
+{%- if brand != blank -%}
+  <div
+    {{ block.shopify_attributes }}
+    class="brand-about"
+    style="padding-block-start: {{ block.settings.padding-block-start }}px; padding-block-end: {{ block.settings.padding-block-end }}px; padding-inline-start: {{ block.settings.padding-inline-start }}px; padding-inline-end: {{ block.settings.padding-inline-end }}px;"
+  >
+    {%- if brand.logo.value -%}
+      <div class="brand-about__logo">
+        {{ brand.logo.value | image_url: width: 200 | image_tag: loading: 'lazy' }}
+      </div>
+    {%- endif -%}
+    {%- if brand.about.value != blank -%}
+      <div class="brand-about__text">{{ brand.about.value | metafield_tag }}</div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Brand about",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "padding-block-start",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-block-end",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-start",
+      "label": "Padding left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding-inline-end",
+      "label": "Padding right",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

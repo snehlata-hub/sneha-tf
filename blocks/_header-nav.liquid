@@ -1,0 +1,20 @@
+<nav {{ block.shopify_attributes }} class="header-nav" aria-label="Main navigation">
+  <ul class="header-nav__list">
+    {% content_for 'blocks' %}
+  </ul>
+</nav>
+
+{% schema %}
+{
+  "name": "Header Navigation",
+  "tag": null,
+  "settings": [],
+  "blocks": [
+    { "type": "_header-navigation-item" },
+    { "type": "_mobile-menu-carousel" },
+    { "type": "_header-nav-promo-banner" },
+    { "type": "links" },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}
