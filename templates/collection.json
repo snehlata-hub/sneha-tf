@@ -1099,71 +1099,12 @@
         "padding-block-start": 10,
         "padding-block-end": 80
       }
-    },
-    "faq_tqaCMk": {
-      "type": "faq",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "static": true,
-          "settings": {
-            "text": "<p>Frequently asked questions</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h1",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "faq-accordion": {
-          "type": "_faq-accordion",
-          "static": true,
-          "settings": {
-            "icon": "caret",
-            "dividers": true,
-            "open_first": true,
-            "type_preset": "body-regular",
-            "content_type_preset": "body-small"
-          },
-          "blocks": {}
-        }
-      },
-      "name": "FAQ",
-      "settings": {
-        "faq_metaobject": "{{ collection.metafields.ediblearrangement.faq.value }}",
-        "section_width": "page-width",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
-    "plp_related_links_f3eKb7": {
-      "type": "plp-related-links",
-      "name": "PLP Related Links",
-      "settings": {
-        "heading": "Related Links",
-        "section_width": "page-width",
-        "color_scheme": "",
-        "padding-block-start": 24,
-        "padding-block-end": 24
-      }
     }
   },
   "order": [
     "collection_header",
     "collection_viewer",
     "blog_article_list_pgWUAa",
-    "section_cBm8kt",
-    "faq_tqaCMk",
-    "plp_related_links_f3eKb7"
+    "section_cBm8kt"
   ]
 }

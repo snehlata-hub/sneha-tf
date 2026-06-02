@@ -478,16 +478,6 @@
             "header_navigation_item_eMJy6m",
             "header_navigation_item_NMdQEG"
           ]
-        },
-        "search-drawer": {
-          "type": "_search-drawer",
-          "static": true,
-          "settings": {
-            "title": "Bestseller",
-            "collection": "frontpage",
-            "top_searchs": "one, two, three"
-          },
-          "blocks": {}
         }
       },
       "settings": {

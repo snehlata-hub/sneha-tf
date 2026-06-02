@@ -485,56 +485,9 @@
         "padding-block-start": 48,
         "padding-block-end": 100
       }
-    },
-    "faq_T7F347": {
-      "type": "faq",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "static": true,
-          "settings": {
-            "text": "<h2>Frequently asked questions</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h1",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "faq-accordion": {
-          "type": "_faq-accordion",
-          "static": true,
-          "settings": {
-            "icon": "caret",
-            "dividers": true,
-            "open_first": true,
-            "type_preset": "body-regular",
-            "content_type_preset": "body-small"
-          },
-          "blocks": {}
-        }
-      },
-      "name": "Dynamic Faq",
-      "settings": {
-        "faq_metaobject": "on-goody-pdp",
-        "section_width": "page-width",
-        "gap": 32,
-        "color_scheme": "scheme-13",
-        "padding-block-start": 80,
-        "padding-block-end": 80
-      }
     }
   },
   "order": [
-    "main",
-    "faq_T7F347"
+    "main"
   ]
 }
