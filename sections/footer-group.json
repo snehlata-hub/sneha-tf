@@ -489,10 +489,8 @@
       "type": "footer-utilities",
       "blocks": {
         "footer_legal_links_ArEQ3x": {
-          "type": "footer-legal-links",
-          "name": "t:names.legal_links",
+          "type": "footer-policy-list",
           "settings": {
-            "menu": "legal",
             "font_size": "0.75rem",
             "case": "none"
           },
