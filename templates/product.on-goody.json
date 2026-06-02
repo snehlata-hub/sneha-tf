@@ -330,7 +330,7 @@
                   "name": "Product messaging",
                   "settings": {
                     "type_preset": "label",
-                    "color": "var(--color-primary)",
+                    "color": "#e10600",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,

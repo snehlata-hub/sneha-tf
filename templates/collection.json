@@ -1138,7 +1138,7 @@
       },
       "name": "FAQ",
       "settings": {
-        "faq_metaobject": "{{ collection.metafields.ediblearrangement.faq.value }}",
+        "faq_metaobject": "",
         "section_width": "page-width",
         "gap": 32,
         "color_scheme": "",

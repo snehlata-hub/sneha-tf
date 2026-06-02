@@ -32,7 +32,7 @@
           "type": "text",
           "settings": {
             "text": "<p><strong>Love is served, get up to 20% off</strong></p>",
-            "type_preset": "h1",
+            "type_preset": "display",
             "alignment": "center",
             "width": "100%",
             "max_width": "normal",
@@ -43,7 +43,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Find your Valentine something special and get it delivered right on time.</p>",
-            "type_preset": "paragraph",
+            "type_preset": "body-regular",
             "alignment": "center",
             "width": "100%",
             "max_width": "normal",

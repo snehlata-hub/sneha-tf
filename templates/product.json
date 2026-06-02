@@ -255,7 +255,7 @@
                 "heading_color": "var(--color-foreground-heading)",
                 "text_type_preset": "label",
                 "text_weight": "400",
-                "text_color": "var(--color-primary)",
+                "text_color": "#e10600",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
