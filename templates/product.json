@@ -252,7 +252,7 @@
               "settings": {
                 "heading_type_preset": "body-small",
                 "heading_weight": "600",
-                "heading_color": "var(--color-foreground-heading)",
+                "heading_color": "#000000",
                 "text_type_preset": "label",
                 "text_weight": "400",
                 "text_color": "var(--color-primary)",
