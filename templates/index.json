@@ -22,10 +22,10 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 8,
         "section_width": "page-width",
-        "section_height": "large",
+        "section_height": "medium",
         "color_scheme": "scheme-2",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 100,
+        "padding-block-end": 100
       },
       "blocks": {
         "heading": {
@@ -35,7 +35,7 @@
             "type_preset": "display",
             "alignment": "center",
             "width": "100%",
-            "max_width": "normal",
+            "max_width": "none",
             "color": "#960E20"
           }
         },
@@ -46,7 +46,7 @@
             "type_preset": "body-regular",
             "alignment": "center",
             "width": "100%",
-            "max_width": "normal",
+            "max_width": "none",
             "color": "#5F0300",
             "padding-block-end": 24
           }
