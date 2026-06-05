@@ -27,7 +27,7 @@
       "type": "promo-cards",
       "settings": {
         "color_scheme": "scheme-1",
-        "section_width": "page-width",
+        "section_width": "full-width",
         "show_divider": true,
         "divider_color": "#E0E0E0",
         "padding-block-start": 24,
