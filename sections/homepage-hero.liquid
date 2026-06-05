@@ -1,0 +1,318 @@
+<section
+  class="homepage-hero color-{{ section.settings.color_scheme }}"
+  style="
+    --homepage-hero-padding-top: {{ section.settings.padding-block-start }}px;
+    --homepage-hero-padding-bottom: {{ section.settings.padding-block-end }}px;
+  "
+  data-testid="homepage-hero"
+>
+  <div class="homepage-hero__media">
+    {% if section.settings.desktop_image != blank %}
+      {%- assign desktop_sizes = '100vw' -%}
+      {{
+        section.settings.desktop_image
+        | image_url: width: section.settings.desktop_image.width
+        | image_tag:
+          class: 'homepage-hero__image homepage-hero__image--desktop',
+          sizes: desktop_sizes,
+          widths: '768,1024,1536,2048',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.heading
+      }}
+    {% endif %}
+    {% if section.settings.mobile_image != blank %}
+      {%- assign mobile_sizes = '100vw' -%}
+      {{
+        section.settings.mobile_image
+        | image_url: width: section.settings.mobile_image.width
+        | image_tag:
+          class: 'homepage-hero__image homepage-hero__image--mobile',
+          sizes: mobile_sizes,
+          widths: '390,780',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.heading
+      }}
+    {% endif %}
+    <div class="homepage-hero__gradient"></div>
+  </div>
+
+  <div class="homepage-hero__content">
+    <div class="homepage-hero__text">
+      {% if section.settings.heading != blank %}
+        <h2 class="homepage-hero__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="homepage-hero__subheading">
+          {{ section.settings.subheading | escape }}
+        </p>
+      {% endif %}
+    </div>
+    {% if section.settings.button_text != blank %}
+      <a
+        {% if section.settings.button_link != blank %}
+          href="{{ section.settings.button_link }}"
+        {% endif %}
+        class="homepage-hero__button"
+        {% if section.settings.button_link == blank %}
+          role="link"
+          aria-disabled="true"
+        {% endif %}
+      >
+        {{ section.settings.button_text | escape }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .homepage-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 667px;
+    overflow: hidden;
+    background-color: var(--color-background);
+    padding-top: var(--homepage-hero-padding-top, 112px);
+    padding-bottom: var(--homepage-hero-padding-bottom, 112px);
+  }
+
+  .homepage-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .homepage-hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .homepage-hero__image--desktop {
+    display: block;
+  }
+
+  .homepage-hero__image--mobile {
+    display: none;
+  }
+
+  .homepage-hero__gradient {
+    display: none;
+  }
+
+  .homepage-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 1102px;
+    margin-inline: auto;
+    padding-inline: 40px;
+    text-align: center;
+  }
+
+  .homepage-hero__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .homepage-hero__heading {
+    font-family: var(--font-heading--family);
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 86px;
+    letter-spacing: -1.44px;
+    color: var(--color-foreground-heading);
+    margin: 0;
+  }
+
+  .homepage-hero__subheading {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  .homepage-hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 4px 32px;
+    background-color: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+    border: none;
+    border-radius: 24px;
+    font-family: var(--font-body--family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-primary-button-hover-background);
+      color: var(--color-primary-button-hover-text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-foreground-heading);
+      outline-offset: 2px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .homepage-hero {
+      min-height: 500px;
+    }
+
+    .homepage-hero__image--desktop {
+      display: none;
+    }
+
+    .homepage-hero__image--mobile {
+      display: block;
+    }
+
+    .homepage-hero__gradient {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(247, 199, 179, 0.75) 0%,
+        rgba(247, 199, 179, 0.15) 100%
+      );
+    }
+
+    .homepage-hero__content {
+      gap: 24px;
+      padding-inline: 16px;
+    }
+
+    .homepage-hero__heading {
+      font-size: 40px;
+      line-height: 48px;
+      letter-spacing: -0.8px;
+      color: #5F0300;
+    }
+
+    .homepage-hero__subheading {
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: -0.28px;
+      color: #1D1D1D;
+    }
+
+    .homepage-hero__button {
+      min-height: 40px;
+      padding: 4px 24px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Homepage Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Love is served, get up to 20% off"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Find your Valentine something special and get it delivered right on time."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Valentine's Day Gifts"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-9"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 112,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 112,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Hero"
+    }
+  ]
+}
+{% endschema %}

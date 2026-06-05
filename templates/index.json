@@ -10,56 +10,18 @@
 {
   "sections": {
     "hero": {
-      "type": "hero",
+      "type": "homepage-hero",
       "settings": {
-        "media_type_1": "image",
-        "image_1": "shopify://shop_images/image-mobile-290717104.png",
-        "custom_mobile_media": true,
-        "media_type_1_mobile": "image",
-        "image_1_mobile": "shopify://shop_images/488223314-4162144964070648-3784634604601335810-n-1-mobile-290717950.png",
-        "content_direction": "column",
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 8,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "color_scheme": "scheme-2",
-        "padding-block-start": 100,
-        "padding-block-end": 100
-      },
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Love is served, get up to 20% off</strong></p>",
-            "type_preset": "display",
-            "alignment": "center",
-            "width": "100%",
-            "max_width": "none",
-            "color": "#960E20"
-          }
-        },
-        "subheading": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Find your Valentine something special and get it delivered right on time.</p>",
-            "type_preset": "body-regular",
-            "alignment": "center",
-            "width": "100%",
-            "max_width": "none",
-            "color": "#5F0300",
-            "padding-block-end": 24
-          }
-        },
-        "cta_button": {
-          "type": "button",
-          "settings": {
-            "label": "Shop Valentine's Day Gifts",
-            "link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": ["heading", "subheading", "cta_button"]
+        "heading": "Love is served, get up to 20% off",
+        "subheading": "Find your Valentine something special and get it delivered right on time.",
+        "button_text": "Shop Valentine's Day Gifts",
+        "button_link": "shopify://collections/all",
+        "desktop_image": "shopify://shop_images/image-mobile-290717104.png",
+        "mobile_image": "shopify://shop_images/488223314-4162144964070648-3784634604601335810-n-1-mobile-290717950.png",
+        "color_scheme": "scheme-9",
+        "padding-block-start": 112,
+        "padding-block-end": 112
+      }
     },
     "promo-cards": {
       "type": "promo-cards",
