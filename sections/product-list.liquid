@@ -78,6 +78,22 @@
   </div>
 </div>
 
+{% stylesheet %}
+  .section-resource-list__header {
+    width: 100%;
+  }
+
+  .section-resource-list__header .text-block > *,
+  .section-resource-list__header .text-block h1,
+  .section-resource-list__header .text-block h2,
+  .section-resource-list__header .text-block h3,
+  .section-resource-list__header .text-block h4,
+  .section-resource-list__header .text-block h5,
+  .section-resource-list__header .text-block h6 {
+    text-align: left;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.product_list",
