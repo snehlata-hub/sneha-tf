@@ -113,7 +113,7 @@
             "product_list_text": {
               "type": "_product-list-text",
               "settings": {
-                "text": "<h2>Fresh, sweet, <span style=\"color: #C41230;\">unforgettable</span></h2>",
+                "text": "<h2>Fresh, sweet, unforgettable</h2>",
                 "type_preset": "h1",
                 "font": "var(--font-body--family)",
                 "font_size": "",
