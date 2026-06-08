@@ -92,6 +92,49 @@
   .section-resource-list__header .text-block h6 {
     text-align: left;
   }
+
+  /* Featured collection heading typography overrides */
+  .section-resource-list__header .custom-typography,
+  .section-resource-list__header .custom-typography > * {
+    font-weight: 600;
+    letter-spacing: -0.96px;
+    color: #4A3629;
+  }
+
+  /* Two-tone heading: green accent for em-wrapped text */
+  .section-resource-list__header .custom-typography em {
+    font-style: italic;
+    color: #2F6B21;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-resource-list__header .custom-font-size,
+    .section-resource-list__header .custom-font-size > * {
+      font-size: 2rem;
+    }
+
+    .section-resource-list__header .custom-typography,
+    .section-resource-list__header .custom-typography > * {
+      letter-spacing: -0.64px;
+    }
+  }
+
+  /* Product card image gradient background */
+  .section-resource-list .card-gallery {
+    background: linear-gradient(180deg, #F2E7DF 0%, #F5F1F1 100%);
+  }
+
+  /* ATC button: full-width on desktop, auto on mobile */
+  .section-resource-list .product-card-atc .button {
+    width: 100%;
+    border-radius: 24px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-resource-list .product-card-atc .button {
+      width: auto;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
