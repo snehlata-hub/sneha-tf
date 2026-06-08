@@ -101,21 +101,55 @@
     color: #4A3629;
   }
 
-  /* Two-tone heading: green accent for em-wrapped text */
-  .section-resource-list__header .custom-typography em {
-    font-style: italic;
-    color: #2F6B21;
+  /* Heading line-height to match Figma 58px/48px */
+  .section-resource-list__header .custom-font-size,
+  .section-resource-list__header .custom-font-size > * {
+    line-height: 1.208;
+  }
+
+  /* Outline button styling for "Shop All" link */
+  .section-resource-list__header .link {
+    color: #E10600;
+    border: 1px solid #E10600;
+    padding: 3px 0;
+    white-space: nowrap;
+    text-decoration: none;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 749px) {
+    /* Mobile section padding: Figma 0 top / 56px bottom */
+    .section-resource-list {
+      padding-block-start: 0 !important;
+      padding-block-end: 56px !important;
+    }
+
+    /* Mobile heading gap: Figma 16px */
+    .section-resource-list__header .layout-panel-flex {
+      gap: 16px !important;
+    }
+
+    /* Mobile heading font-size + line-height: Figma 32px/38px */
     .section-resource-list__header .custom-font-size,
     .section-resource-list__header .custom-font-size > * {
       font-size: 2rem;
+      line-height: 1.1875;
     }
 
     .section-resource-list__header .custom-typography,
     .section-resource-list__header .custom-typography > * {
       letter-spacing: -0.64px;
+    }
+
+    /* Mobile link button: smaller font, bottom padding only */
+    .section-resource-list__header .link {
+      padding: 0 0 1px 0;
+      font-size: 0.875rem;
+    }
+
+    /* Mobile carousel gap: Figma 16px */
+    .section-resource-list .resource-list__carousel slideshow-slides {
+      gap: 16px;
     }
   }
 
