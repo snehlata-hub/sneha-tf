@@ -263,7 +263,60 @@
           ]
         }
       }
+    },
+    "popular-categories": {
+      "type": "popular-categories",
+      "settings": {
+        "heading": "Popular categories",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      },
+      "blocks": {
+        "card-birthday": {
+          "type": "category-card",
+          "settings": {
+            "title": "Birthday",
+            "image": "shopify://shop_images/rectangle-161-mobile-476818149.png"
+          }
+        },
+        "card-same-day": {
+          "type": "category-card",
+          "settings": {
+            "title": "Same Day Delivery",
+            "image": "shopify://shop_images/image-desktop-I3586721335847158.png"
+          }
+        },
+        "card-catering": {
+          "type": "category-card",
+          "settings": {
+            "title": "Catering",
+            "image": "shopify://shop_images/image-mobile-35867277.png"
+          }
+        },
+        "card-1hour": {
+          "type": "category-card",
+          "settings": {
+            "title": "1-Hour Delivery",
+            "image": "shopify://shop_images/product-image-mobile-290718361.png"
+          }
+        },
+        "card-create": {
+          "type": "category-card",
+          "settings": {
+            "title": "Create Your Own",
+            "image": "shopify://shop_images/image-mobile-35867265.png"
+          }
+        },
+        "card-shop-all": {
+          "type": "category-card",
+          "settings": {
+            "title": "Shop All",
+            "image": "shopify://shop_images/image-mobile-35867289.jpg"
+          }
+        }
+      },
+      "block_order": ["card-birthday", "card-same-day", "card-catering", "card-1hour", "card-create", "card-shop-all"]
     }
   },
-  "order": ["hero", "promo-cards", "featured-collection-occasion"]
+  "order": ["hero", "promo-cards", "featured-collection-occasion", "popular-categories"]
 }
