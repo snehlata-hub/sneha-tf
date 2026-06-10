@@ -169,6 +169,70 @@
       width: auto;
     }
   }
+
+  /* Desktop: Price block typography — Figma 14px, font-weight 500 */
+  .section-resource-list product-price {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Desktop: Product options count — Figma 14px, font-weight 400 */
+  .section-resource-list .product-options-count {
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  /* Desktop: Product badge label — Figma 12px, font-weight 500 */
+  .section-resource-list .product-badge__label {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Desktop: Product discount info — Figma 14px, font-weight 500 */
+  .section-resource-list .product-discount-info {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Desktop: Shop All link font-size — Figma 16px */
+  .section-resource-list__header .link {
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    /* Mobile: Shop All link — underline only, no box border */
+    .section-resource-list__header .link {
+      border: none;
+      border-bottom: 1px solid #E10600;
+      border-radius: 0;
+      font-size: 0.875rem;
+    }
+
+    /* Mobile: Product title — Figma 14px */
+    .section-resource-list a.user-select-text .text-block {
+      font-size: 0.875rem;
+    }
+
+    /* Mobile: Price block — Figma 12px */
+    .section-resource-list product-price {
+      font-size: 0.75rem;
+    }
+
+    /* Mobile: Product options count — Figma 12px */
+    .section-resource-list .product-options-count {
+      font-size: 0.75rem;
+    }
+
+    /* Mobile: Product discount info — Figma 12px */
+    .section-resource-list .product-discount-info {
+      font-size: 0.75rem;
+    }
+
+    /* Mobile: ATC button text — Figma 12px */
+    .section-resource-list .product-card-atc .button {
+      font-size: 0.75rem;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
