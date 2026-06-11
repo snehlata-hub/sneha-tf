@@ -250,8 +250,8 @@
                   "settings": {
                     "label": "Add to Cart",
                     "style_class": "button",
-                    "width": "fit-content",
-                    "width_mobile": "fit-content"
+                    "width": "fill",
+                    "width_mobile": "fill"
                   }
                 }
               },
@@ -276,7 +276,7 @@
         "layout_type": "carousel",
         "max_products": 8,
         "columns": 4,
-        "mobile_card_size": "60cqw",
+        "mobile_card_size": "44cqw",
         "columns_gap": 32,
         "rows_gap": 8,
         "icons_style": "arrow",
