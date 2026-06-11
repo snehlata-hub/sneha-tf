@@ -113,7 +113,7 @@
             "product_list_text": {
               "type": "_product-list-text",
               "settings": {
-                "text": "<p>Fresh, sweet, unforgettable</p>",
+                "text": "<p>Fresh, sweet, <em>unforgettable</em></p>",
                 "type_preset": "custom",
                 "font": "var(--font-heading--family)",
                 "font_size": "3rem",
