@@ -25,14 +25,6 @@
     },
     "promo-cards": {
       "type": "promo-cards",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "section_width": "full-width",
-        "show_divider": true,
-        "divider_color": "#E0E0E0",
-        "padding-block-start": 24,
-        "padding-block-end": 0
-      },
       "blocks": {
         "card-birthday": {
           "type": "promo-card",
@@ -57,26 +49,21 @@
           }
         }
       },
-      "block_order": ["card-birthday", "card-bundle"]
+      "block_order": [
+        "card-birthday",
+        "card-bundle"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "full-width",
+        "show_divider": true,
+        "divider_color": "#E0E0E0",
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
     },
     "featured-collection": {
       "type": "product-list",
-      "settings": {
-        "layout_type": "carousel",
-        "max_products": 8,
-        "columns": 4,
-        "mobile_card_size": "60cqw",
-        "columns_gap": 32,
-        "rows_gap": 8,
-        "icons_style": "arrow",
-        "icons_shape": "circle",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 32,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 80,
-        "padding-block-end": 0
-      },
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
@@ -115,6 +102,8 @@
               "type": "_product-list-text",
               "settings": {
                 "text": "<h2>Fresh, sweet, <em>unforgettable</em></h2>",
+                "width": "fit-content",
+                "max_width": "none",
                 "type_preset": "custom",
                 "font": "var(--font-heading--family)",
                 "font_size": "3rem",
@@ -123,8 +112,6 @@
                 "case": "none",
                 "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
-                "width": "fit-content",
-                "max_width": "none",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -144,7 +131,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -265,67 +255,105 @@
                   }
                 }
               },
-              "block_order": ["atc_button"]
+              "block_order": [
+                "atc_button"
+              ]
             }
           },
-          "block_order": ["product-card-gallery", "badge", "delivery", "product_title", "options_count", "price_info", "discount_info", "atc"]
+          "block_order": [
+            "product-card-gallery",
+            "badge",
+            "delivery",
+            "product_title",
+            "options_count",
+            "price_info",
+            "discount_info",
+            "atc"
+          ]
         }
       },
-      "block_order": []
+      "settings": {
+        "layout_type": "carousel",
+        "max_products": 8,
+        "columns": 4,
+        "mobile_card_size": "60cqw",
+        "columns_gap": 32,
+        "rows_gap": 8,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 32,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 0
+      }
     },
     "popular-categories": {
       "type": "popular-categories",
-      "settings": {
-        "heading": "Popular categories",
-        "padding-block-start": 80,
-        "padding-block-end": 80
-      },
       "blocks": {
         "card-birthday": {
           "type": "category-card",
           "settings": {
-            "title": "Birthday",
-            "image": "shopify://shop_images/rectangle-161-mobile-476818149.png"
+            "image": "shopify://shop_images/rectangle-161-mobile-476818149.png",
+            "title": "Birthday"
           }
         },
         "card-same-day": {
           "type": "category-card",
           "settings": {
-            "title": "Same Day Delivery",
-            "image": "shopify://shop_images/image-desktop-I3586721335847158.png"
+            "image": "shopify://shop_images/image-desktop-I3586721335847158.png",
+            "title": "Same Day Delivery"
           }
         },
         "card-catering": {
           "type": "category-card",
           "settings": {
-            "title": "Catering",
-            "image": "shopify://shop_images/image-mobile-35867277.png"
+            "image": "shopify://shop_images/image-mobile-35867277.png",
+            "title": "Catering"
           }
         },
         "card-1hour": {
           "type": "category-card",
           "settings": {
-            "title": "1-Hour Delivery",
-            "image": "shopify://shop_images/product-image-mobile-290718361.png"
+            "image": "shopify://shop_images/product-image-mobile-290718361.png",
+            "title": "1-Hour Delivery"
           }
         },
         "card-create": {
           "type": "category-card",
           "settings": {
-            "title": "Create Your Own",
-            "image": "shopify://shop_images/image-mobile-35867265.png"
+            "image": "shopify://shop_images/image-mobile-35867265.png",
+            "title": "Create Your Own"
           }
         },
         "card-shop-all": {
           "type": "category-card",
           "settings": {
-            "title": "Shop All",
-            "image": "shopify://shop_images/image-mobile-35867289.jpg"
+            "image": "shopify://shop_images/image-mobile-35867289.jpg",
+            "title": "Shop All"
           }
         }
       },
-      "block_order": ["card-birthday", "card-same-day", "card-catering", "card-1hour", "card-create", "card-shop-all"]
+      "block_order": [
+        "card-birthday",
+        "card-same-day",
+        "card-catering",
+        "card-1hour",
+        "card-create",
+        "card-shop-all"
+      ],
+      "settings": {
+        "heading": "Popular categories",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
     }
   },
-  "order": ["hero", "promo-cards", "featured-collection", "popular-categories"]
+  "order": [
+    "hero",
+    "promo-cards",
+    "featured-collection",
+    "popular-categories"
+  ]
 }
