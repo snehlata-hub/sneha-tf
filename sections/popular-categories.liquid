@@ -10,10 +10,6 @@
     section--page-width
     color-{{ section.settings.color_scheme }}
     popular-categories
-    spacing-style
-  "
-  style="
-    {% render 'spacing-style', settings: section.settings %}
   "
 >
   {% if section.settings.heading != blank %}
@@ -97,6 +93,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    padding-block: 80px;
   }
 
   .popular-categories__heading {
@@ -205,11 +202,8 @@
   @media screen and (max-width: 749px) {
     .popular-categories {
       gap: 32px;
-    }
-
-    .popular-categories.spacing-style {
-      padding-block-start: 0px !important;
-      padding-block-end: 56px !important;
+      padding-block-start: 0px;
+      padding-block-end: 56px;
     }
 
     .popular-categories__heading {
@@ -315,30 +309,6 @@
       ],
       "default": "none"
     },
-    {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 80
-    }
   ],
   "blocks": [
     {
