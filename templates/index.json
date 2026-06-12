@@ -66,21 +66,6 @@
     },
     "featured-collection": {
       "type": "product-list",
-      "settings": {
-        "layout_type": "carousel",
-        "max_products": 8,
-        "columns": 4,
-        "mobile_card_size": "60cqw",
-        "columns_gap": 32,
-        "icons_style": "arrow",
-        "icons_shape": "circle",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 32,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 80,
-        "padding-block-end": 0
-      },
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
@@ -119,10 +104,10 @@
               "type": "_product-list-text",
               "settings": {
                 "text": "<h2>Fresh, sweet, unforgettable</h2>",
-                "type_preset": "h2",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
+                "type_preset": "h2",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
                 "padding-block-start": 0,
@@ -144,7 +129,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -232,13 +220,38 @@
                   }
                 }
               },
-              "block_order": ["atc-button"]
+              "block_order": [
+                "atc-button"
+              ]
             }
           },
-          "block_order": ["gallery", "badge", "delivery", "title", "options", "price", "discount", "atc"]
+          "block_order": [
+            "gallery",
+            "badge",
+            "delivery",
+            "title",
+            "options",
+            "price",
+            "discount",
+            "atc"
+          ]
         }
       },
-      "block_order": []
+      "settings": {
+        "layout_type": "carousel",
+        "max_products": 8,
+        "columns": 4,
+        "mobile_card_size": "60cqw",
+        "columns_gap": 32,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 32,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 0
+      }
     },
     "popular-categories": {
       "type": "popular-categories",
@@ -304,9 +317,7 @@
         "heading": "Popular categories",
         "color_scheme": "",
         "icons_style": "arrow",
-        "icons_shape": "none",
-        "padding-block-start": 80,
-        "padding-block-end": 80
+        "icons_shape": "none"
       }
     }
   },
