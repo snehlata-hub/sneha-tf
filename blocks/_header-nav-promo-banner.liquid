@@ -20,6 +20,67 @@
   </a>
 {%- endif -%}
 
+{% stylesheet %}
+  .header-nav-promo-banner {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    width: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: opacity 0.2s ease;
+  }
+
+  .header-nav-promo-banner:hover {
+    opacity: 0.85;
+  }
+
+  .header-nav-promo-banner__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .header-nav-promo-banner__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .header-nav-promo-banner__content {
+    padding: 8px 4px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .header-nav-promo-banner__label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e10600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .header-nav-promo-banner__title {
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  .header-nav-promo-banner__title p {
+    margin: 0;
+  }
+
+  /* Hide standalone promo banners at nav level (not inside a dropdown) */
+  .header-nav__list > .header-nav-promo-banner {
+    display: none;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Nav Promo Banner",
