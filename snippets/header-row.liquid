@@ -12,6 +12,8 @@
   @param {string} [localization] - Captured HTML for language/country selector
   @param {string} [search] - Captured HTML for search input
   @param {string} [drawer_search] - Captured HTML for drawer-based search
+  @param {string} [location_search] - Captured HTML for the location search bar
+  @param {string} [mobile_nav_toggle] - Captured HTML for the mobile nav hamburger toggle
 {% enddoc %}
 
 {%- liquid
@@ -32,6 +34,10 @@
 
     case item
       when 'actions'
+        assign item_column = 'right'
+      when 'location_search'
+        assign item_column = 'right'
+      when 'mobile_nav_toggle'
         assign item_column = 'right'
     endcase
 
@@ -84,6 +90,10 @@
               {{ search }}
             {% when 'drawer_search' %}
               {{ drawer_search }}
+            {% when 'location_search' %}
+              {{ location_search }}
+            {% when 'mobile_nav_toggle' %}
+              {{ mobile_nav_toggle }}
             {% when 'actions' %}
               {{ actions }}
           {% endcase %}

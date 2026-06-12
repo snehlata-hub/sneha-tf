@@ -1,0 +1,93 @@
+{% doc %}
+  Header Location Search
+
+  Renders a location search bar styled as a clickable pill with a location icon
+  and placeholder text. Used in the header for "Check availability in your area".
+
+  @param {string} [placeholder] - Placeholder text (default: 'Check availability in your area')
+  @param {string} [link] - URL to navigate to when clicked
+  @param {string} [mobile] - Set to 'true' for mobile variant (full-width)
+
+  @example
+  {% render 'header-location-search', placeholder: 'Check availability in your area', link: '#' %}
+{% enddoc %}
+
+{% liquid
+  assign placeholder = placeholder | default: 'Check availability in your area'
+  assign link = link | default: '#'
+  assign mobile = mobile | default: false
+%}
+
+<a
+  href="{{ link }}"
+  class="header-location-search{% if mobile %} header-location-search--mobile{% else %} header-location-search--desktop{% endif %}"
+  aria-label="{{ placeholder }}"
+>
+  <span class="header-location-search__icon">
+    {{- 'location.svg' | inline_asset_content -}}
+  </span>
+  <span class="header-location-search__text">{{ placeholder }}</span>
+</a>
+
+{% stylesheet %}
+  .header-location-search {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #C6C6C6;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color var(--animation-speed) var(--animation-easing);
+  }
+
+  .header-location-search:hover {
+    border-color: #999999;
+  }
+
+  .header-location-search__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .header-location-search__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-location-search__text {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #464646;
+    font-family: var(--font-body--family);
+  }
+
+  .header-location-search--desktop {
+    max-width: 255px;
+    height: 36px;
+  }
+
+  .header-location-search--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .header-location-search--desktop {
+      display: none;
+    }
+
+    .header-location-search--mobile {
+      display: inline-flex;
+      width: 100%;
+      height: 36px;
+    }
+  }
+{% endstylesheet %}

@@ -7,7 +7,22 @@
     href="{{ block.settings.link | default: '#' }}"
     class="header-nav-item__link"
   >
-    {{ block.settings.title }}
+    {%- if block.settings.icon != blank -%}
+      <img
+        src="{{ block.settings.icon | image_url: width: 28 }}"
+        alt=""
+        class="header-nav-item__icon"
+        width="14"
+        height="14"
+        loading="lazy"
+      >
+    {%- endif -%}
+    <span class="header-nav-item__title">{{ block.settings.title }}</span>
+    {%- if block.settings.submenu != blank -%}
+      <span class="header-nav-item__chevron">
+        {{- 'chevron-down.svg' | inline_asset_content -}}
+      </span>
+    {%- endif -%}
   </a>
   {%- if block.settings.submenu != blank -%}
     <div class="header-nav-item__dropdown">
@@ -15,6 +30,70 @@
     </div>
   {%- endif -%}
 </li>
+
+{% stylesheet %}
+  .header-nav-item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-nav-item__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 48px;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    color: inherit;
+    font-family: var(--font-heading--family);
+    transition: opacity var(--animation-speed) var(--animation-easing);
+  }
+
+  .header-nav-item__link:hover {
+    opacity: 0.7;
+  }
+
+  .header-nav-item__icon {
+    height: 14px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .header-nav-item__chevron {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .header-nav-item__chevron svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile drawer styles */
+  .header__mobile-drawer .header-nav-item {
+    width: 100%;
+  }
+
+  .header__mobile-drawer .header-nav-item__link {
+    width: 100%;
+    border-radius: 0;
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 24px;
+    border-bottom: 1px solid var(--color-border, #E5E5E5);
+  }
+
+  .header__mobile-drawer .header-nav-item--desktop-only {
+    display: none;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {

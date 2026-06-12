@@ -491,7 +491,10 @@
         }
       },
       "settings": {
-        "customer_account_menu": "customer-account-main-menu"
+        "logo_position": "center",
+        "menu_position": "left",
+        "customer_account_menu": "customer-account-main-menu",
+        "show_location_search": true
       }
     }
   },

@@ -4,6 +4,35 @@
   </ul>
 </nav>
 
+{% stylesheet %}
+  .header-nav__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .header-nav {
+      display: none;
+    }
+  }
+
+  .header__mobile-drawer .header-nav {
+    display: block;
+  }
+
+  .header__mobile-drawer .header-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Header Navigation",

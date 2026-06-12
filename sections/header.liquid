@@ -1,8 +1,8 @@
 {% liquid
-  assign order = 'logo,menu,localization,search,drawer_search,actions'
+  assign order = 'logo,menu,localization,search,drawer_search,location_search,mobile_nav_toggle,actions'
 
   if shop.customer_accounts_enabled
-    assign order = 'drawer_search,logo,menu,localization,search,actions'
+    assign order = 'drawer_search,logo,menu,localization,search,location_search,mobile_nav_toggle,actions'
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -52,7 +52,7 @@
 
   # theme-check-disable UniqueStaticBlockId
   capture menu
-    content_for 'block', type: '_header-menu', id: 'header-menu'
+    content_for 'block', type: '_header-nav', id: 'header-navigation'
   endcapture
 
   capture drawer_menu
@@ -62,11 +62,21 @@
   capture navigation_bar
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
   endcapture
+
+  capture mobile_nav_content
+    content_for 'block', type: '_header-nav', id: 'header-navigation'
+  endcapture
   # theme-check-enable UniqueStaticBlockId
 
   capture actions
     render 'header-actions', customer_account_menu: section.settings.customer_account_menu, display_style: section.settings.actions_display_style, section: section
   endcapture
+
+  if section.settings.show_location_search
+    capture location_search
+      render 'header-location-search', placeholder: section.settings.location_search_placeholder, link: section.settings.location_search_link
+    endcapture
+  endif
 
   if shop.customer_accounts_enabled
     assign search_class = 'search-action--hidden-on-drawer'
@@ -76,23 +86,23 @@
   if section.settings.localization_position == 'left'
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'drawer_search,logo,search,localization,menu,actions'
+        assign order = 'drawer_search,logo,search,localization,menu,location_search,mobile_nav_toggle,actions'
       else
-        assign order = 'logo,search,localization,menu,drawer_search,actions'
+        assign order = 'logo,search,localization,menu,drawer_search,location_search,mobile_nav_toggle,actions'
       endif
     else
       if shop.customer_accounts_enabled
-        assign order = 'drawer_search,logo,localization,menu,search,actions'
+        assign order = 'drawer_search,logo,localization,menu,search,location_search,mobile_nav_toggle,actions'
       else
-        assign order = 'logo,localization,menu,search,drawer_search,actions'
+        assign order = 'logo,localization,menu,search,drawer_search,location_search,mobile_nav_toggle,actions'
       endif
     endif
   else
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'drawer_search,logo,search,menu,localization,actions'
+        assign order = 'drawer_search,logo,search,menu,localization,location_search,mobile_nav_toggle,actions'
       else
-        assign order = 'logo,search,menu,localization,drawer_search,actions'
+        assign order = 'logo,search,menu,localization,drawer_search,location_search,mobile_nav_toggle,actions'
       endif
     endif
   endif
@@ -187,6 +197,60 @@
     assign transparent_color_scheme_value = 'bottom'
   endif
 %}
+
+{% capture mobile_nav_toggle %}
+  <div class="header__mobile-drawer-toggle">
+    <script
+      src="{{ 'header-drawer.js' | asset_url }}"
+      type="module"
+      fetchpriority="low"
+    ></script>
+    <header-drawer class="header__mobile-nav-drawer-wrapper">
+      <details
+        id="Details-mobile-nav-drawer"
+        data-skip-node-update="true"
+        class="mobile-nav-drawer-container"
+        ref="details"
+        scroll-lock
+      >
+        <summary
+          class="header__icon header__icon--mobile-nav"
+          aria-label="Menu"
+          on:click="/toggle"
+        >
+          <span class="svg-wrapper header-drawer-icon header-drawer-icon--open">
+            {{- 'menu-icon.svg' | inline_asset_content -}}
+          </span>
+          <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </span>
+        </summary>
+        <div
+          ref="menuDrawer"
+          class="header__mobile-drawer"
+        >
+          <button
+            class="button close-button header__mobile-drawer-close button-unstyled"
+            type="button"
+            aria-label="Close"
+            on:click="/close"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-close.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <nav class="header__mobile-drawer-nav" aria-label="Mobile navigation">
+            {{ mobile_nav_content }}
+          </nav>
+        </div>
+        <div
+          class="header__mobile-drawer-backdrop"
+          on:click="/close"
+        ></div>
+      </details>
+    </header-drawer>
+  </div>
+{% endcapture %}
 
 {% capture localization_markup %}
   {% liquid
@@ -373,7 +437,9 @@
         actions: actions,
         localization: localization_markup,
         search: search,
-        drawer_search: drawer_search
+        drawer_search: drawer_search,
+        location_search: location_search,
+        mobile_nav_toggle: mobile_nav_toggle
       %}
     {% endcapture %}
 
@@ -392,6 +458,12 @@
       </div>
     {% endif %}
   {% endfor %}
+
+  {% if section.settings.show_location_search %}
+    <div class="header__location-search-mobile">
+      {% render 'header-location-search', placeholder: section.settings.location_search_placeholder, link: section.settings.location_search_link, mobile: true %}
+    </div>
+  {% endif %}
 
   {% if navigation_bar != blank %}
     <div class="header__row header__navigation-bar-row color-{{ section.settings.color_scheme_bottom }}">
@@ -1111,6 +1183,166 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* Header container styling - rounded corners and shadow */
+  .header__row--top .header__columns {
+    border-radius: 8px;
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.02);
+    overflow: visible;
+  }
+
+  /* Mobile location search row */
+  .header__location-search-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .header__location-search-mobile {
+      display: flex;
+      padding: 12px 16px;
+      background: #FFFFFF;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid #DBDBDB;
+      border-top: none;
+    }
+
+    .header__row--top .header__columns {
+      border-radius: 8px 8px 0 0;
+      border: 1px solid #DBDBDB;
+      box-shadow: none;
+    }
+
+    /* Wrapper shadow on mobile applies to both rows together */
+    .header__row--top {
+      box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.02);
+    }
+  }
+
+  /* Mobile hamburger drawer toggle */
+  .header__mobile-drawer-toggle {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .header__mobile-drawer-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .header__icon--mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-foreground);
+    padding: 0;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  .header__icon--mobile-nav .header-drawer-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__icon--mobile-nav svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-nav-drawer-container:not(.menu-open) .header-drawer-icon--close {
+    display: none;
+  }
+
+  .mobile-nav-drawer-container.menu-open .header-drawer-icon--open {
+    display: none;
+  }
+
+  /* Mobile drawer panel */
+  .header__mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 320px;
+    height: 100dvh;
+    background-color: #FFFFFF;
+    z-index: var(--layer-menu-drawer, 100);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform var(--drawer-animation-speed, 0.3s) ease,
+      visibility var(--drawer-animation-speed, 0.3s) ease;
+    overflow-y: auto;
+    padding: 0;
+    border-right: 1px solid var(--color-border, #E5E5E5);
+    box-shadow: var(--shadow-drawer, 4px 0 20px rgba(0, 0, 0, 0.1));
+  }
+
+  .menu-open > .header__mobile-drawer {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .header__mobile-drawer-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    color: var(--color-foreground);
+    padding: 8px;
+    z-index: 1;
+  }
+
+  .header__mobile-drawer-close svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header__mobile-drawer-nav {
+    padding: 60px 20px 20px;
+  }
+
+  /* Override the desktop-hidden nav inside the mobile drawer */
+  .header__mobile-drawer .header-nav {
+    display: block;
+  }
+
+  .header__mobile-drawer .header-nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .header__mobile-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    backdrop-filter: brightness(0.75);
+    z-index: var(--layer-heightened, 10);
+    opacity: 0;
+    transition: opacity var(--drawer-animation-speed, 0.3s) ease;
+    pointer-events: none;
+  }
+
+  .menu-open > .header__mobile-drawer-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile nav drawer wrapper — hide on desktop */
+  .header__mobile-nav-drawer-wrapper {
+    display: contents;
+  }
+
+  @media screen and (min-width: 750px) {
+    .header__mobile-nav-drawer-wrapper {
+      display: none;
+    }
+  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
@@ -1361,6 +1593,29 @@
       ],
       "default": "top",
       "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
+    },
+    {
+      "type": "header",
+      "content": "Location search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_location_search",
+      "label": "Show location search",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "location_search_placeholder",
+      "label": "Search placeholder",
+      "default": "Check availability in your area",
+      "visible_if": "{{ section.settings.show_location_search }}"
+    },
+    {
+      "type": "url",
+      "id": "location_search_link",
+      "label": "Search link",
+      "visible_if": "{{ section.settings.show_location_search }}"
     },
     {
       "type": "header",
