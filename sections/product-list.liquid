@@ -2,6 +2,26 @@
   assign max_items = section.settings.max_products
 %}
 
+{% style %}
+  {% if section.settings.card_background_color != blank %}
+    #shopify-section-{{ section.id }} .product-card__content {
+      background-color: {{ section.settings.card_background_color }};
+    }
+  {% endif %}
+  {% if section.settings.card_button_color != blank %}
+    #shopify-section-{{ section.id }} .product-card-atc .button,
+    #shopify-section-{{ section.id }} .product-card-atc .button-primary {
+      background-color: {{ section.settings.card_button_color }};
+      border-color: {{ section.settings.card_button_color }};
+      color: #ffffff;
+    }
+  {% endif %}
+  #shopify-section-{{ section.id }} .product-card-atc .button[aria-disabled='true'],
+  #shopify-section-{{ section.id }} .product-card-atc .button-primary[aria-disabled='true'] {
+    opacity: 1;
+  }
+{% endstyle %}
+
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
   data-testid="product-list"
@@ -315,6 +335,20 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Card styling"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background"
+    },
+    {
+      "type": "color",
+      "id": "card_button_color",
+      "label": "Card button color"
     },
     {
       "type": "header",

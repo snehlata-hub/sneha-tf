@@ -253,6 +253,8 @@
         "horizontal_alignment": "flex-start",
         "gap": 32,
         "color_scheme": "scheme-1",
+        "card_background_color": "#f2e7df",
+        "card_button_color": "#e10600",
         "padding-block-start": 80,
         "padding-block-end": 0
       }
