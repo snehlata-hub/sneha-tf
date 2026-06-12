@@ -5,6 +5,19 @@
   {% content_for 'blocks' %}
 </div>
 
+{% stylesheet %}
+  .product-card-atc .button[aria-disabled='true'],
+  .product-card-atc .button-primary[aria-disabled='true'] {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .product-card-atc .button,
+  .product-card-atc .button-primary {
+    justify-content: center;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Product Card ATC",
