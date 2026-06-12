@@ -19,7 +19,7 @@
         "desktop_image": "shopify://shop_images/image-mobile-290717104.png",
         "mobile_image": "shopify://shop_images/488223314-4162144964070648-3784634604601335810-n-1-mobile-290717950.png",
         "color_scheme": "scheme-9",
-        "padding-block-start": 112,
+        "padding-block-start": 40,
         "padding-block-end": 112
       }
     },
@@ -33,8 +33,9 @@
             "heading": "Don't forget to make it sweet",
             "description": "Send same-day treats they'll love.",
             "button_text": "Shop Birthday",
+            "button_link": "",
             "background_image": "shopify://shop_images/rectangle-161-mobile-476818149.png",
-            "overlay_color": "#FBF7F5"
+            "overlay_color": "#fbf7f5"
           }
         },
         "card-bundle": {
@@ -44,8 +45,9 @@
             "heading": "Get up to 20% off",
             "description": "Bundle up our best products.",
             "button_text": "Create Your Bundle",
+            "button_link": "",
             "background_image": "shopify://shop_images/rectangle-161-mobile-476818133.png",
-            "overlay_color": "#F6F6F4"
+            "overlay_color": "#f6f6f4"
           }
         }
       },
@@ -57,7 +59,7 @@
         "color_scheme": "scheme-1",
         "section_width": "full-width",
         "show_divider": true,
-        "divider_color": "#E0E0E0",
+        "divider_color": "#e0e0e0",
         "padding-block-start": 24,
         "padding-block-end": 0
       }
@@ -69,42 +71,48 @@
           "type": "category-card",
           "settings": {
             "image": "shopify://shop_images/rectangle-161-mobile-476818149.png",
-            "title": "Birthday"
+            "title": "Birthday",
+            "link": ""
           }
         },
         "card-same-day": {
           "type": "category-card",
           "settings": {
             "image": "shopify://shop_images/image-desktop-I3586721335847158.png",
-            "title": "Same Day Delivery"
+            "title": "Same Day Delivery",
+            "link": ""
           }
         },
         "card-catering": {
           "type": "category-card",
           "settings": {
             "image": "shopify://shop_images/image-mobile-35867277.png",
-            "title": "Catering"
+            "title": "Catering",
+            "link": ""
           }
         },
         "card-1hour": {
           "type": "category-card",
           "settings": {
             "image": "shopify://shop_images/product-image-mobile-290718361.png",
-            "title": "1-Hour Delivery"
+            "title": "1-Hour Delivery",
+            "link": ""
           }
         },
         "card-create": {
           "type": "category-card",
           "settings": {
             "image": "shopify://shop_images/image-mobile-35867265.png",
-            "title": "Create Your Own"
+            "title": "Create Your Own",
+            "link": ""
           }
         },
         "card-shop-all": {
           "type": "category-card",
           "settings": {
             "image": "shopify://shop_images/image-mobile-35867289.jpg",
-            "title": "Shop All"
+            "title": "Shop All",
+            "link": ""
           }
         }
       },
@@ -118,6 +126,9 @@
       ],
       "settings": {
         "heading": "Popular categories",
+        "color_scheme": "",
+        "icons_style": "arrow",
+        "icons_shape": "none",
         "padding-block-start": 80,
         "padding-block-end": 80
       }
