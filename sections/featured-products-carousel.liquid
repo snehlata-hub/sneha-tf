@@ -47,10 +47,24 @@
                       <div class="fc-card__callout">{{ badge_text }}</div>
                     {%- endif -%}
                     {%- assign featured_img = product.featured_image -%}
+                    {%- assign fallback_img = section.settings.fallback_image -%}
                     {%- if featured_img != blank -%}
                       <img
                         src="{{ featured_img | image_url: width: 656 }}"
+                        srcset="{{ featured_img | image_url: width: 375 }} 375w, {{ featured_img | image_url: width: 550 }} 550w, {{ featured_img | image_url: width: 656 }} 656w"
+                        sizes="(min-width: 1024px) 25vw, (min-width: 750px) 50vw, 85vw"
                         alt="{{ featured_img.alt | default: product.title | escape }}"
+                        width="328"
+                        height="328"
+                        loading="lazy"
+                        class="fc-card__img"
+                      >
+                    {%- elsif fallback_img != blank -%}
+                      <img
+                        src="{{ fallback_img | image_url: width: 656 }}"
+                        srcset="{{ fallback_img | image_url: width: 375 }} 375w, {{ fallback_img | image_url: width: 550 }} 550w, {{ fallback_img | image_url: width: 656 }} 656w"
+                        sizes="(min-width: 1024px) 25vw, (min-width: 750px) 50vw, 85vw"
+                        alt="{{ product.title | escape }}"
                         width="328"
                         height="328"
                         loading="lazy"
@@ -605,6 +619,12 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_image",
+      "label": "Fallback product image",
+      "info": "Shown when a product has no image"
     },
     {
       "type": "text",

@@ -68,6 +68,7 @@
       "type": "featured-products-carousel",
       "settings": {
         "collection": "all",
+        "fallback_image": "shopify://shop_images/product-image-desktop-290717808.png",
         "heading": "Fresh, sweet, unforgettable",
         "heading_link_text": "Shop All Valentine's Day",
         "heading_link_url": "shopify://collections/all",
