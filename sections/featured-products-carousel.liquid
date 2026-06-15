@@ -4,11 +4,10 @@
 -%}
 
 <div
-  class="fc-carousel color-{{ section.settings.color_scheme }} spacing-style"
-  style="--padding-block-start: {{ section.settings['padding-block-start'] }}px; --padding-block-end: {{ section.settings['padding-block-end'] }}px;"
+  class="fc-carousel color-{{ section.settings.color_scheme }}"
+  style="padding-top: {{ section.settings['padding-block-start'] }}px; padding-bottom: {{ section.settings['padding-block-end'] }}px;"
 >
-  <div class="section section--page-width">
-    <div class="fc-carousel__inner">
+  <div class="fc-carousel__inner">
 
       <div class="fc-carousel__header">
         <h2 class="fc-carousel__heading">
@@ -166,10 +165,13 @@
       </div>
 
     </div>
-  </div>
 </div>
 
 {% stylesheet %}
+/* Horizontal padding (replaces theme grid margins — direct approach) */
+.fc-carousel {
+  padding-inline: 16px;
+}
 /* =========================================
    Featured Products Carousel
    ========================================= */
@@ -485,11 +487,15 @@
   opacity: 1;
 }
 
-/* Mobile bottom padding override per Figma (pad:0/16/56/16) */
-@media screen and (max-width: 749px) {
-  .fc-carousel.spacing-style {
-    padding-block-start: 0;
-    padding-block-end: 56px;
+@media screen and (min-width: 750px) {
+  .fc-carousel {
+    padding-inline: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .fc-carousel {
+    padding-inline: 64px;
   }
 }
 
@@ -564,11 +570,6 @@
    Desktop: >=1024px — 4 cards
    ========================================= */
 @media screen and (min-width: 1024px) {
-  /* Override page-margin to 64px per Figma (body default is 40px) */
-  .fc-carousel .section {
-    --page-margin: 64px;
-  }
-
   .fc-carousel__track {
     gap: 32px;
   }
