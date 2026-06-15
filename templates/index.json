@@ -64,6 +64,16 @@
         "padding-block-end": 0
       }
     },
+    "featured_products_carousel": {
+      "type": "featured-products-carousel",
+      "settings": {
+        "heading": "Fresh, sweet, unforgettable",
+        "heading_link_text": "Shop All Valentine's Day",
+        "padding-block-start": 80,
+        "padding-block-end": 0,
+        "color_scheme": "scheme-1"
+      }
+    },
     "popular-categories": {
       "type": "popular-categories",
       "blocks": {
@@ -135,6 +145,7 @@
   "order": [
     "hero",
     "promo-cards",
+    "featured_products_carousel",
     "popular-categories"
   ]
 }
