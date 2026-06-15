@@ -564,6 +564,11 @@
    Desktop: >=1024px — 4 cards
    ========================================= */
 @media screen and (min-width: 1024px) {
+  /* Override page-margin to 64px per Figma (body default is 40px) */
+  .fc-carousel .section {
+    --page-margin: 64px;
+  }
+
   .fc-carousel__track {
     gap: 32px;
   }
