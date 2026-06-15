@@ -67,8 +67,11 @@
     "featured_products_carousel": {
       "type": "featured-products-carousel",
       "settings": {
+        "collection": "all",
         "heading": "Fresh, sweet, unforgettable",
         "heading_link_text": "Shop All Valentine's Day",
+        "heading_link_url": "shopify://collections/all",
+        "max_products": 8,
         "padding-block-start": 80,
         "padding-block-end": 0,
         "color_scheme": "scheme-1"
