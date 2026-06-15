@@ -1,5 +1,18 @@
 {
   "attribution": {
     "commit": ""
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/apple/.theme-factory/workspace/sneha-tf/.claude/tf-block-theme-dev.cjs\""
+          }
+        ]
+      }
+    ]
   }
 }
