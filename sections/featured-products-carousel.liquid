@@ -108,9 +108,11 @@
                           {%- if product.price_varies -%}
                             <span class="fc-card__price">Starting at {{ product.price_min | money }}</span>
                           {%- else -%}
-                            <span class="fc-card__price">{{ product.price_min | money }}</span>
                             {%- if product.compare_at_price_max > product.price_min -%}
+                              <span class="fc-card__price fc-card__price--on-sale">{{ product.price_min | money }}</span>
                               <span class="fc-card__compare-price">{{ product.compare_at_price_max | money }}</span>
+                            {%- else -%}
+                              <span class="fc-card__price">{{ product.price_min | money }}</span>
                             {%- endif -%}
                           {%- endif -%}
                         </div>
@@ -395,15 +397,19 @@
 
 .fc-card__price {
   font-family: var(--font-body--family);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 12px;
   line-height: 17px;
   color: #1D1D1D;
 }
 
+.fc-card__price--on-sale {
+  font-weight: 500;
+}
+
 .fc-card__compare-price {
   font-family: var(--font-body--family);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 12px;
   line-height: 17px;
   color: #1D1D1D;
@@ -525,8 +531,15 @@
   }
 
   .fc-card__price {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  .fc-card__price--on-sale {
     font-size: 14px;
     line-height: 20px;
+    font-weight: 500;
   }
 
   .fc-card__compare-price {
@@ -682,7 +695,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 32
     }
   ],
   "presets": [
