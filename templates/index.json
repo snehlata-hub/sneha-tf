@@ -157,6 +157,89 @@
         "padding-block-start": 64,
         "padding-block-end": 64
       }
+    },
+    "shop_collection": {
+      "type": "shop-collection",
+      "blocks": {
+        "block-under-50": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-page-3-I301410927212810875206210996.jpg",
+            "title": "Under $50"
+          }
+        },
+        "block-same-day": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-page-3-I301410927213311134206210996.png",
+            "title": "Same Day Delivery"
+          }
+        },
+        "block-best-sellers": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-page-3-I301410927213311140206210996.png",
+            "title": "Best Sellers"
+          }
+        },
+        "block-flowers": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/product-image-mobile-290718361.png",
+            "title": "Flowers"
+          }
+        },
+        "block-chocolate-dipped": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-page-3-I301410927213311137206210996.png",
+            "title": "Chocolate Dipped"
+          }
+        },
+        "block-baked-goods": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-page-3-I301410927212810877206210996.png",
+            "title": "Baked Goods"
+          }
+        },
+        "block-gift-sets": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-mobile-35867277.png",
+            "title": "Gift Sets"
+          }
+        },
+        "block-catering": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-page-3-I301410927212810879206210996.png",
+            "title": "Catering"
+          }
+        }
+      },
+      "block_order": [
+        "block-under-50",
+        "block-same-day",
+        "block-best-sellers",
+        "block-flowers",
+        "block-chocolate-dipped",
+        "block-baked-goods",
+        "block-gift-sets",
+        "block-catering"
+      ],
+      "settings": {
+        "subtitle": "FIND THE PERFECT GIFT",
+        "tab1_label": "Shop by product",
+        "tab2_label": "Shop by occasion",
+        "color_scheme": "scheme-e57b5e6d-a914-4206-b7ce-96f6af3232dd",
+        "icons_style": "none",
+        "icons_shape": "none",
+        "padding-block-start": 48,
+        "padding-block-end": 48,
+        "strawberry_back": "shopify://shop_images/back-desktop-290717744.png",
+        "strawberry_front": "shopify://shop_images/front-page-3-I301410927269211005.png"
+      }
     }
   },
   "order": [
@@ -164,6 +247,7 @@
     "promo-cards",
     "featured_products_carousel",
     "popular-categories",
-    "promotional_banner"
+    "promotional_banner",
+    "shop_collection"
   ]
 }
