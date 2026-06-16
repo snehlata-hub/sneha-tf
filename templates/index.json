@@ -139,6 +139,10 @@
         "heading_link_text": "Shop All Birthday",
         "heading_link_url": "",
         "max_products": 8,
+        "placeholder_image_1": "shopify://shop_images/product-image-design-1000221417.png",
+        "placeholder_image_2": "shopify://shop_images/product-image-desktop-290717808.png",
+        "placeholder_image_3": "shopify://shop_images/product-image-mobile-290718380.png",
+        "placeholder_image_4": "shopify://shop_images/product-image-mobile-290718361.png",
         "color_scheme": "scheme-1",
         "padding-block-start": 80,
         "padding-block-end": 32
@@ -312,9 +316,9 @@
     "hero",
     "promo-cards",
     "featured_products_carousel",
-    "bestseller_featured_carousel",
     "popular-categories",
     "promotional_banner",
-    "shop_collection"
+    "shop_collection",
+    "bestseller_featured_carousel"
   ]
 }
