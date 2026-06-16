@@ -78,6 +78,72 @@
         "color_scheme": "scheme-1"
       }
     },
+    "bestseller_featured_carousel": {
+      "type": "featured-products-carousel",
+      "blocks": {
+        "tab_birthday": {
+          "type": "filter-tab",
+          "settings": {
+            "label": "Birthday",
+            "url": ""
+          }
+        },
+        "tab_thank_you": {
+          "type": "filter-tab",
+          "settings": {
+            "label": "Thank you",
+            "url": ""
+          }
+        },
+        "tab_love_romance": {
+          "type": "filter-tab",
+          "settings": {
+            "label": "Love & Romance",
+            "url": ""
+          }
+        },
+        "tab_sympathy": {
+          "type": "filter-tab",
+          "settings": {
+            "label": "Sympathy",
+            "url": ""
+          }
+        },
+        "tab_get_well": {
+          "type": "filter-tab",
+          "settings": {
+            "label": "Get Well",
+            "url": ""
+          }
+        },
+        "tab_just_because": {
+          "type": "filter-tab",
+          "settings": {
+            "label": "Just Because",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_birthday",
+        "tab_thank_you",
+        "tab_love_romance",
+        "tab_sympathy",
+        "tab_get_well",
+        "tab_just_because"
+      ],
+      "settings": {
+        "heading": "Our",
+        "heading_accent": "most-loved",
+        "heading_suffix": "creations",
+        "heading_link_text": "Shop All Birthday",
+        "heading_link_url": "",
+        "max_products": 8,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 32
+      }
+    },
     "popular-categories": {
       "type": "popular-categories",
       "blocks": {
@@ -246,6 +312,7 @@
     "hero",
     "promo-cards",
     "featured_products_carousel",
+    "bestseller_featured_carousel",
     "popular-categories",
     "promotional_banner",
     "shop_collection"

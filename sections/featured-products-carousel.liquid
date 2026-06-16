@@ -1,6 +1,22 @@
 {%- liquid
   assign collection_obj = collections[section.settings.collection]
   assign products_limit = section.settings.max_products | default: 8
+
+  assign has_tabs = false
+  for block in section.blocks
+    if block.type == 'filter-tab'
+      assign has_tabs = true
+      break
+    endif
+  endfor
+
+  assign first_tab_block = nil
+  for block in section.blocks
+    if block.type == 'filter-tab'
+      assign first_tab_block = block
+      break
+    endif
+  endfor
 -%}
 
 <div
@@ -9,24 +25,184 @@
 >
   <div class="fc-carousel__inner">
 
-      <div class="fc-carousel__header">
-        <h2 class="fc-carousel__heading">
-          {{- section.settings.heading -}}
-          {%- if section.settings.heading_accent != blank -%}
-            <span class="fc-carousel__heading-accent"> {{ section.settings.heading_accent }}</span>
-          {%- endif -%}
-        </h2>
-        {%- if section.settings.heading_link_text != blank -%}
-          {%- if section.settings.heading_link_url != blank -%}
-            <a href="{{ section.settings.heading_link_url }}" class="fc-carousel__shop-all">
-              {{- section.settings.heading_link_text -}}
-            </a>
-          {%- else -%}
-            <span class="fc-carousel__shop-all">{{ section.settings.heading_link_text }}</span>
-          {%- endif -%}
+    <div class="fc-carousel__header">
+      <h2 class="fc-carousel__heading">
+        {{- section.settings.heading -}}
+        {%- if section.settings.heading_accent != blank -%}
+          <span class="fc-carousel__heading-accent"> {{ section.settings.heading_accent }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading_suffix != blank %} {{ section.settings.heading_suffix }}{%- endif -%}
+      </h2>
+      {%- if has_tabs and first_tab_block -%}
+        <a class="fc-carousel__shop-all fc-carousel__shop-all--mobile" href="{{ first_tab_block.settings.url }}" data-shop-all-link>Shop All <span data-shop-all-label>{{ first_tab_block.settings.label }}</span></a>
+      {%- elsif section.settings.heading_link_text != blank -%}
+        {%- if section.settings.heading_link_url != blank -%}
+          <a href="{{ section.settings.heading_link_url }}" class="fc-carousel__shop-all fc-carousel__shop-all--mobile">
+            {{- section.settings.heading_link_text -}}
+          </a>
+        {%- else -%}
+          <span class="fc-carousel__shop-all fc-carousel__shop-all--mobile">{{ section.settings.heading_link_text }}</span>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- if has_tabs -%}
+      <div class="fc-carousel__filters-row">
+        <div class="fc-carousel__filters">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'filter-tab' -%}
+              <button
+                class="fc-carousel__chip{% if forloop.first %} fc-carousel__chip--active{% endif %}"
+                type="button"
+                data-tab-index="{{ forloop.index0 }}"
+                aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+              >{{ block.settings.label }}</button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        <a class="fc-carousel__shop-all fc-carousel__shop-all--desktop" href="{{ first_tab_block.settings.url }}" data-shop-all-link>Shop All <span data-shop-all-label>{{ first_tab_block.settings.label }}</span></a>
+      </div>
+    {%- elsif section.settings.heading_link_text != blank -%}
+      <div class="fc-carousel__filters-row fc-carousel__filters-row--no-chips">
+        {%- if section.settings.heading_link_url != blank -%}
+          <a class="fc-carousel__shop-all" href="{{ section.settings.heading_link_url }}">{{ section.settings.heading_link_text }}</a>
+        {%- else -%}
+          <span class="fc-carousel__shop-all">{{ section.settings.heading_link_text }}</span>
         {%- endif -%}
       </div>
+    {%- endif -%}
 
+    {%- if has_tabs -%}
+      {%- assign tab_loop_index = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'filter-tab' -%}
+          {%- assign tab_col = collections[block.settings.collection] -%}
+          <div
+            class="fc-carousel__tab-panel{% if forloop.first %} fc-carousel__tab-panel--active{% endif %}"
+            data-tab-index="{{ forloop.index0 }}"
+            data-shop-all-url="{{ block.settings.url }}"
+            data-tab-label="{{ block.settings.label }}"
+          >
+            <div class="fc-carousel__carousel-area">
+              <div class="fc-carousel__track">
+                {%- if tab_col != blank -%}
+                  {%- for product in tab_col.products limit: products_limit -%}
+                    {%- liquid
+                      assign badge_text = product.metafields.ediblearrangement.badge.value
+                      assign availability_methods = product.metafields.ediblearrangement.availability_method.value
+                      assign availability_str = availability_methods | join: ','
+                      assign promo_message = product.metafields.ediblearrangement.promotional_message.value
+                      assign first_variant = product.selected_or_first_available_variant
+                      assign variant_option_name = product.options.first | downcase
+                      assign dots_count = product.images.size
+                      if dots_count > 5
+                        assign dots_count = 5
+                      endif
+                    -%}
+                    <div class="fc-carousel__slide">
+                      <div class="fc-carousel__card">
+                        <div class="fc-card__image-wrap">
+                          {%- if badge_text != blank -%}
+                            <div class="fc-card__callout">{{ badge_text }}</div>
+                          {%- endif -%}
+                          {%- assign featured_img = product.featured_image -%}
+                          {%- if featured_img != blank -%}
+                            <img
+                              src="{{ featured_img | image_url: width: 656 }}"
+                              srcset="{{ featured_img | image_url: width: 375 }} 375w, {{ featured_img | image_url: width: 550 }} 550w, {{ featured_img | image_url: width: 656 }} 656w"
+                              sizes="(min-width: 1024px) 25vw, (min-width: 750px) 50vw, 85vw"
+                              alt="{{ featured_img.alt | default: product.title | escape }}"
+                              width="328"
+                              height="328"
+                              loading="lazy"
+                              class="fc-card__img"
+                            >
+                          {%- endif -%}
+                          {%- if product.images.size > 1 -%}
+                            <div class="fc-card__dots" aria-hidden="true">
+                              {%- for i in (1..dots_count) -%}
+                                <span class="fc-card__dot{% if forloop.first %} fc-card__dot--active{% endif %}"></span>
+                              {%- endfor -%}
+                            </div>
+                          {%- endif -%}
+                        </div>
+                        <div class="fc-card__info">
+                          <div class="fc-card__content">
+                            <div class="fc-card__title-area">
+                              {%- if availability_str contains 'Same Day' -%}
+                                <div class="fc-card__badge">
+                                  <img
+                                    src="{{ 'badge-icon-2.svg' | asset_url }}"
+                                    alt=""
+                                    width="16"
+                                    height="16"
+                                    loading="lazy"
+                                    class="fc-card__badge-icon"
+                                  >
+                                  <span class="fc-card__badge-text">Same Day Delivery</span>
+                                </div>
+                              {%- endif -%}
+                              <a href="{{ product.url }}" class="fc-card__title">{{ product.title }}</a>
+                            </div>
+                            <div class="fc-card__price-area">
+                              {%- if product.variants.size > 1 -%}
+                                {%- liquid
+                                  if variant_option_name == 'title'
+                                    assign option_label = 'options'
+                                  else
+                                    assign option_label = variant_option_name | append: 's'
+                                  endif
+                                -%}
+                                <p class="fc-card__variant-count">{{ product.variants.size }} {{ option_label }} available</p>
+                              {%- endif -%}
+                              <div class="fc-card__price-row">
+                                {%- if product.price_varies -%}
+                                  <span class="fc-card__price">Starting at {{ product.price_min | money }}</span>
+                                {%- else -%}
+                                  {%- if product.compare_at_price_max > product.price_min -%}
+                                    <span class="fc-card__price fc-card__price--on-sale">{{ product.price_min | money }}</span>
+                                    <span class="fc-card__compare-price">{{ product.compare_at_price_max | money }}</span>
+                                  {%- else -%}
+                                    <span class="fc-card__price">{{ product.price_min | money }}</span>
+                                  {%- endif -%}
+                                {%- endif -%}
+                              </div>
+                              {%- if promo_message != blank -%}
+                                <p class="fc-card__promo">with code {{ promo_message }}</p>
+                              {%- endif -%}
+                            </div>
+                          </div>
+                          <form action="/cart/add" method="post" class="fc-card__atc-form">
+                            <input type="hidden" name="id" value="{{ first_variant.id }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="fc-card__atc-btn">Add to Cart</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for i in (1..4) -%}
+                    <div class="fc-carousel__slide">
+                      <div class="fc-carousel__card fc-carousel__card--placeholder">
+                        <div class="fc-card__image-wrap"></div>
+                        <div class="fc-card__info">
+                          <div class="fc-card__content">
+                            <div class="fc-card__title-area">
+                              <span class="fc-card__title">Select a collection in settings</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
       <div class="fc-carousel__carousel-area">
         <div class="fc-carousel__track">
           {%- if collection_obj != blank -%}
@@ -45,7 +221,6 @@
               -%}
               <div class="fc-carousel__slide">
                 <div class="fc-carousel__card">
-
                   <div class="fc-card__image-wrap">
                     {%- if badge_text != blank -%}
                       <div class="fc-card__callout">{{ badge_text }}</div>
@@ -71,10 +246,8 @@
                       </div>
                     {%- endif -%}
                   </div>
-
                   <div class="fc-card__info">
                     <div class="fc-card__content">
-
                       <div class="fc-card__title-area">
                         {%- if availability_str contains 'Same Day' -%}
                           <div class="fc-card__badge">
@@ -91,7 +264,6 @@
                         {%- endif -%}
                         <a href="{{ product.url }}" class="fc-card__title">{{ product.title }}</a>
                       </div>
-
                       <div class="fc-card__price-area">
                         {%- if product.variants.size > 1 -%}
                           {%- liquid
@@ -119,16 +291,13 @@
                           <p class="fc-card__promo">with code {{ promo_message }}</p>
                         {%- endif -%}
                       </div>
-
                     </div>
-
                     <form action="/cart/add" method="post" class="fc-card__atc-form">
                       <input type="hidden" name="id" value="{{ first_variant.id }}">
                       <input type="hidden" name="quantity" value="1">
                       <button type="submit" class="fc-card__atc-btn">Add to Cart</button>
                     </form>
                   </div>
-
                 </div>
               </div>
             {%- endfor -%}
@@ -150,28 +319,30 @@
           {%- endif -%}
         </div>
       </div>
+    {%- endif -%}
 
-      <div class="fc-carousel__arrows-row">
-        <button class="fc-carousel__arrow fc-carousel__arrow--prev" type="button" aria-label="Previous">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M15 18L9 12L15 6" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="fc-carousel__arrow fc-carousel__arrow--next" type="button" aria-label="Next">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M9 6L15 12L9 18" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-
+    <div class="fc-carousel__arrows-row">
+      <button class="fc-carousel__arrow fc-carousel__arrow--prev" type="button" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M15 18L9 12L15 6" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="fc-carousel__arrow fc-carousel__arrow--next" type="button" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 6L15 12L9 18" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
+
+  </div>
 </div>
 
 {% stylesheet %}
-/* Horizontal padding (replaces theme grid margins — direct approach) */
+/* Horizontal padding */
 .fc-carousel {
   padding-inline: 16px;
 }
+
 /* =========================================
    Featured Products Carousel
    ========================================= */
@@ -195,7 +366,7 @@
   font-size: 32px;
   line-height: 38px;
   letter-spacing: -0.64px;
-  color: #4A3629;
+  color: #5F0300;
   margin: 0;
   padding: 0;
 }
@@ -204,6 +375,73 @@
   color: #E10600;
 }
 
+/* --- Filters row --- */
+.fc-carousel__filters-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fc-carousel__filters-row--no-chips {
+  justify-content: flex-start;
+}
+
+.fc-carousel__filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex-wrap: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.fc-carousel__filters::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Filter chips --- */
+.fc-carousel__chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 24px;
+  border: 1px solid #EDEDED;
+  background: #FFFFFF;
+  color: #464646;
+  font-family: var(--font-body--family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.fc-carousel__chip--active {
+  background: #FCE6E6;
+  border-color: #F6B2B0;
+  color: #E10600;
+  font-weight: 600;
+}
+
+.fc-carousel__chip:hover:not(.fc-carousel__chip--active) {
+  border-color: #CCCCCC;
+}
+
+/* --- Tab panels --- */
+.fc-carousel__tab-panel {
+  display: none;
+}
+
+.fc-carousel__tab-panel--active {
+  display: block;
+}
+
+/* --- Shop all link --- */
 .fc-carousel__shop-all {
   font-family: var(--font-heading--family, var(--font-body--family));
   font-weight: 600;
@@ -217,6 +455,14 @@
 
 .fc-carousel__shop-all:hover {
   opacity: 0.8;
+}
+
+.fc-carousel__shop-all--mobile {
+  display: inline-block;
+}
+
+.fc-carousel__shop-all--desktop {
+  display: none;
 }
 
 /* --- Carousel area --- */
@@ -491,22 +737,9 @@
   .fc-carousel {
     padding-inline: 40px;
   }
-}
 
-@media screen and (min-width: 1024px) {
-  .fc-carousel {
-    padding-inline: 64px;
-  }
-}
-
-/* =========================================
-   Tablet: 750px – 1023px — 2 cards
-   ========================================= */
-@media screen and (min-width: 750px) {
   .fc-carousel__header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
+    flex-direction: column;
     gap: 8px;
   }
 
@@ -516,10 +749,16 @@
     letter-spacing: -0.96px;
   }
 
-  .fc-carousel__shop-all {
+  .fc-carousel__shop-all--mobile {
+    display: none;
+  }
+
+  .fc-carousel__shop-all--desktop {
+    display: inline-block;
     font-size: 16px;
     line-height: 22px;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .fc-carousel__slide {
@@ -566,10 +805,11 @@
   }
 }
 
-/* =========================================
-   Desktop: >=1024px — 4 cards
-   ========================================= */
 @media screen and (min-width: 1024px) {
+  .fc-carousel {
+    padding-inline: 64px;
+  }
+
   .fc-carousel__track {
     gap: 32px;
   }
@@ -585,36 +825,109 @@
   'use strict';
 
   function initFCCarousels() {
-    const carousels = document.querySelectorAll('.fc-carousel');
+    var carousels = document.querySelectorAll('.fc-carousel');
 
     carousels.forEach(function (carousel) {
-      const track = carousel.querySelector('.fc-carousel__track');
-      const prevBtn = carousel.querySelector('.fc-carousel__arrow--prev');
-      const nextBtn = carousel.querySelector('.fc-carousel__arrow--next');
+      var prevBtn = carousel.querySelector('.fc-carousel__arrow--prev');
+      var nextBtn = carousel.querySelector('.fc-carousel__arrow--next');
 
-      if (!track || !prevBtn || !nextBtn) return;
+      if (!prevBtn || !nextBtn) return;
 
-      function getSlideWidth() {
-        const slides = track.querySelectorAll('.fc-carousel__slide');
+      var tabPanels = carousel.querySelectorAll('.fc-carousel__tab-panel');
+      var isTabMode = tabPanels.length > 0;
+
+      function getActiveTrack() {
+        if (isTabMode) {
+          var activePanel = carousel.querySelector('.fc-carousel__tab-panel--active');
+          return activePanel ? activePanel.querySelector('.fc-carousel__track') : null;
+        }
+        return carousel.querySelector('.fc-carousel__track');
+      }
+
+      function getSlideWidth(track) {
+        if (!track) return 0;
+        var slides = track.querySelectorAll('.fc-carousel__slide');
         if (slides.length < 2) return track.clientWidth;
         return slides[1].offsetLeft - slides[0].offsetLeft;
       }
 
       function updateArrows() {
-        const maxScroll = track.scrollWidth - track.clientWidth;
+        var track = getActiveTrack();
+        if (!track) return;
+        var maxScroll = track.scrollWidth - track.clientWidth;
         prevBtn.style.opacity = track.scrollLeft <= 1 ? '0.5' : '1';
         nextBtn.style.opacity = track.scrollLeft >= maxScroll - 1 ? '0.5' : '1';
       }
 
       prevBtn.addEventListener('click', function () {
-        track.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+        var track = getActiveTrack();
+        if (!track) return;
+        track.scrollBy({ left: -getSlideWidth(track), behavior: 'smooth' });
       });
 
       nextBtn.addEventListener('click', function () {
-        track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+        var track = getActiveTrack();
+        if (!track) return;
+        track.scrollBy({ left: getSlideWidth(track), behavior: 'smooth' });
       });
 
-      track.addEventListener('scroll', updateArrows, { passive: true });
+      if (isTabMode) {
+        var chips = carousel.querySelectorAll('.fc-carousel__chip');
+        var shopAllLinks = carousel.querySelectorAll('[data-shop-all-link]');
+        var shopAllLabels = carousel.querySelectorAll('[data-shop-all-label]');
+
+        tabPanels.forEach(function (panel) {
+          var track = panel.querySelector('.fc-carousel__track');
+          if (track) {
+            track.addEventListener('scroll', updateArrows, { passive: true });
+          }
+        });
+
+        chips.forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            var tabIndex = chip.getAttribute('data-tab-index');
+
+            chips.forEach(function (c) {
+              c.classList.remove('fc-carousel__chip--active');
+              c.setAttribute('aria-pressed', 'false');
+            });
+            chip.classList.add('fc-carousel__chip--active');
+            chip.setAttribute('aria-pressed', 'true');
+
+            tabPanels.forEach(function (panel) {
+              panel.classList.remove('fc-carousel__tab-panel--active');
+            });
+
+            var activePanel = carousel.querySelector('.fc-carousel__tab-panel[data-tab-index="' + tabIndex + '"]');
+            if (activePanel) {
+              activePanel.classList.add('fc-carousel__tab-panel--active');
+
+              var shopAllUrl = activePanel.getAttribute('data-shop-all-url');
+              var tabLabel = activePanel.getAttribute('data-tab-label');
+
+              shopAllLinks.forEach(function (link) {
+                if (shopAllUrl) link.setAttribute('href', shopAllUrl);
+              });
+              shopAllLabels.forEach(function (label) {
+                if (tabLabel) label.textContent = tabLabel;
+              });
+
+              var newTrack = activePanel.querySelector('.fc-carousel__track');
+              if (newTrack) {
+                newTrack.scrollLeft = 0;
+              }
+            }
+
+            updateArrows();
+          });
+        });
+      } else {
+        var singleTrack = carousel.querySelector('.fc-carousel__track');
+        if (singleTrack) {
+          singleTrack.addEventListener('scroll', updateArrows, { passive: true });
+        }
+      }
+
       updateArrows();
     });
   }
@@ -648,6 +961,12 @@
       "label": "Heading accent word",
       "info": "Displays in brand red after the heading text",
       "default": "unforgettable"
+    },
+    {
+      "type": "text",
+      "id": "heading_suffix",
+      "label": "Heading suffix word",
+      "info": "Displays after the accent word"
     },
     {
       "type": "text",
@@ -702,6 +1021,30 @@
       "step": 1,
       "unit": "px",
       "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter-tab",
+      "name": "Filter tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "default": "Birthday"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Shop All URL"
+        }
+      ]
     }
   ],
   "presets": [
