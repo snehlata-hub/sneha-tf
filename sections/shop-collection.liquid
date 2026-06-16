@@ -120,6 +120,7 @@
 {% stylesheet %}
   .shopify-section:has(> .shop-collection) {
     position: relative;
+    overflow: hidden;
   }
 
   .shop-collection {
@@ -170,12 +171,20 @@
 
   .shop-collection__tab--active {
     font-weight: 600;
-    color: #4A3629;
+    color: var(--color-foreground);
     text-decoration: underline;
   }
 
   .shop-collection__carousel-wrapper {
     width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media screen and (min-width: 750px) {
+    .shop-collection__carousel-wrapper {
+      padding-inline-start: 64px;
+    }
   }
 
   .shop-collection__carousel {
@@ -238,6 +247,8 @@
     height: 178px;
     transform: rotate(-0.3deg);
     pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
   }
 
   .shop-collection__strawberry-back {
