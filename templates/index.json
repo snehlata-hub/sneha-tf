@@ -144,12 +144,26 @@
         "icons_style": "arrow",
         "icons_shape": "none"
       }
+    },
+    "promotional_banner": {
+      "type": "promotional-banner",
+      "settings": {
+        "heading": "Perfect platters for every gathering",
+        "subheading": "Fresh fruit, dipped treats, and shareable favorites—beautifully arranged for parties, meetings, and celebrations.",
+        "button_text": "Shop Platters and Boards",
+        "button_link": "",
+        "desktop_image": "shopify://shop_images/rectangle-159-page-3-290717178.png",
+        "mobile_image": "shopify://shop_images/image-banner-page-4-290718274.png",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
     }
   },
   "order": [
     "hero",
     "promo-cards",
     "featured_products_carousel",
-    "popular-categories"
+    "popular-categories",
+    "promotional_banner"
   ]
 }
