@@ -73,9 +73,9 @@
         "heading_link_text": "Shop All Valentine's Day",
         "heading_link_url": "shopify://collections/valentines-day",
         "max_products": 8,
+        "color_scheme": "scheme-1",
         "padding-block-start": 80,
-        "padding-block-end": 32,
-        "color_scheme": "scheme-1"
+        "padding-block-end": 32
       }
     },
     "bestseller_featured_carousel": {
@@ -139,10 +139,6 @@
         "heading_link_text": "Shop All Birthday",
         "heading_link_url": "",
         "max_products": 8,
-        "placeholder_image_1": "shopify://shop_images/product-image-design-1000221417.png",
-        "placeholder_image_2": "shopify://shop_images/product-image-desktop-290717808.png",
-        "placeholder_image_3": "shopify://shop_images/product-image-mobile-290718380.png",
-        "placeholder_image_4": "shopify://shop_images/product-image-mobile-290718361.png",
         "color_scheme": "scheme-1",
         "padding-block-start": 80,
         "padding-block-end": 32
@@ -302,13 +298,13 @@
         "subtitle": "FIND THE PERFECT GIFT",
         "tab1_label": "Shop by product",
         "tab2_label": "Shop by occasion",
-        "color_scheme": "scheme-e57b5e6d-a914-4206-b7ce-96f6af3232dd",
+        "strawberry_back": "shopify://shop_images/back-desktop-290717744.png",
+        "strawberry_front": "shopify://shop_images/front-page-3-I301410927269211005.png",
         "icons_style": "none",
         "icons_shape": "none",
+        "color_scheme": "scheme-e57b5e6d-a914-4206-b7ce-96f6af3232dd",
         "padding-block-start": 48,
-        "padding-block-end": 48,
-        "strawberry_back": "shopify://shop_images/back-desktop-290717744.png",
-        "strawberry_front": "shopify://shop_images/front-page-3-I301410927269211005.png"
+        "padding-block-end": 48
       }
     }
   },

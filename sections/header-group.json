@@ -176,7 +176,7 @@
               "name": "t:names.menu_item",
               "settings": {
                 "title": "Shop All",
-                "link": "shopify://collections/shop-all",
+                "link": "shopify://collections/all-fruit-arrangements",
                 "submenu": "",
                 "text_color": "#1d1d1d",
                 "highlight_titles": "",
