@@ -21,6 +21,11 @@
         assign overlay_g = overlay_color | color_extract: 'green'
         assign overlay_b = overlay_color | color_extract: 'blue'
 
+        assign overlay_color_2 = block.settings.overlay_gradient_color_2 | default: overlay_color
+        assign overlay_r2 = overlay_color_2 | color_extract: 'red'
+        assign overlay_g2 = overlay_color_2 | color_extract: 'green'
+        assign overlay_b2 = overlay_color_2 | color_extract: 'blue'
+
         assign desktop_image = block.settings.background_image
         assign mobile_image = block.settings.mobile_image
         assign has_desktop_image = false
@@ -36,7 +41,7 @@
 
       <div
         class="promo-card"
-        style="--promo-card-overlay-rgb: {{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }};"
+        style="--promo-card-overlay-rgb: {{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}; --promo-card-gradient-2-rgb: {{ overlay_r2 }}, {{ overlay_g2 }}, {{ overlay_b2 }};"
         {{ block.shopify_attributes }}
       >
         {% if has_desktop_image or has_mobile_image %}
@@ -78,6 +83,8 @@
             <a
               {% if block.settings.button_link != blank %}
                 href="{{ block.settings.button_link }}"
+              {% else %}
+                tabindex="0"
               {% endif %}
               class="promo-card__cta"
             >
@@ -151,9 +158,10 @@
       background: linear-gradient(
         to right,
         rgba(var(--promo-card-overlay-rgb), 1) 0%,
-        rgba(var(--promo-card-overlay-rgb), 1) 35%,
-        rgba(var(--promo-card-overlay-rgb), 0.8) 50%,
-        rgba(var(--promo-card-overlay-rgb), 0) 68%
+        rgba(var(--promo-card-overlay-rgb), 1) 30%,
+        rgba(var(--promo-card-overlay-rgb), 0.7) 50%,
+        rgba(var(--promo-card-gradient-2-rgb), 0.35) 65%,
+        rgba(var(--promo-card-gradient-2-rgb), 0) 80%
       );
       pointer-events: none;
     }
@@ -395,6 +403,12 @@
           "id": "overlay_color",
           "label": "Overlay color",
           "default": "#FBF7F5"
+        },
+        {
+          "type": "color",
+          "id": "overlay_gradient_color_2",
+          "label": "Overlay gradient end color",
+          "default": "#F2E7DF"
         }
       ]
     }
@@ -410,7 +424,8 @@
             "heading": "Don't forget to make it sweet",
             "description": "Send same-day treats they'll love.",
             "button_text": "Shop Birthday",
-            "overlay_color": "#FBF7F5"
+            "overlay_color": "#FBF7F5",
+            "overlay_gradient_color_2": "#F2E7DF"
           }
         },
         {
@@ -420,7 +435,8 @@
             "heading": "Get up to 20% off",
             "description": "Bundle up our best products.",
             "button_text": "Create Your Bundle",
-            "overlay_color": "#F6F6F4"
+            "overlay_color": "#F6F6F4",
+            "overlay_gradient_color_2": "#EBEBE8"
           }
         }
       ]

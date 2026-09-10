@@ -35,7 +35,9 @@
             "button_text": "Shop Birthday",
             "button_link": "",
             "background_image": "shopify://shop_images/rectangle-161-mobile-476818149.png",
-            "overlay_color": "#fbf7f5"
+            "mobile_image": "shopify://shop_images/rectangle-161-mobile-476818149.png",
+            "overlay_color": "#fbf7f5",
+            "overlay_gradient_color_2": "#F2E7DF"
           }
         },
         "card-bundle": {
@@ -47,7 +49,9 @@
             "button_text": "Create Your Bundle",
             "button_link": "",
             "background_image": "shopify://shop_images/rectangle-161-mobile-476818133.png",
-            "overlay_color": "#f6f6f4"
+            "mobile_image": "shopify://shop_images/rectangle-161-mobile-476818133.png",
+            "overlay_color": "#f6f6f4",
+            "overlay_gradient_color_2": "#EBEBE8"
           }
         }
       },
