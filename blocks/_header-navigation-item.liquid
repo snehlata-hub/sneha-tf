@@ -1,12 +1,15 @@
 <li
   {{ block.shopify_attributes }}
-  class="header-nav-item{% if block.settings.visibility == 'desktop' %} header-nav-item--desktop-only{% elsif block.settings.visibility == 'mobile' %} header-nav-item--mobile-only{% endif %}"
+  class="header-nav-item{% if block.settings.visibility == 'desktop' %} header-nav-item--desktop-only{% elsif block.settings.visibility == 'mobile' %} header-nav-item--mobile-only{% endif %}{% if block.settings.asset_icon != blank %} header-nav-item--has-asset-icon{% endif %}"
   style="color: {{ block.settings.text_color }};"
 >
   <a
     href="{{ block.settings.link | default: '#' }}"
     class="header-nav-item__link"
   >
+    {%- if block.settings.asset_icon != blank -%}
+      <span class="header-nav-item__asset-icon">{{- block.settings.asset_icon | inline_asset_content -}}</span>
+    {%- endif -%}
     {%- if block.settings.icon != blank -%}
       <img
         src="{{ block.settings.icon | image_url: width: 28 }}"
@@ -144,6 +147,23 @@
   .header__mobile-drawer .header-nav-item:hover .header-nav-item__dropdown {
     display: block;
   }
+
+  .header-nav-item__asset-icon {
+    display: inline-flex;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .header-nav-item__asset-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .header-nav-item--has-asset-icon .header-nav-item__link {
+    padding-block: 4px;
+    padding-inline: 16px;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -171,6 +191,12 @@
       "type": "image_picker",
       "id": "icon",
       "label": "Icon image"
+    },
+    {
+      "type": "text",
+      "id": "asset_icon",
+      "label": "Asset icon filename (SVG)",
+      "info": "Filename of an SVG in the theme assets folder, e.g. heart-plus.svg. Rendered inline for CSS color control."
     },
     {
       "type": "color",

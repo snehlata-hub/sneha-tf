@@ -136,6 +136,7 @@
                 "title": "Valentine’s Day",
                 "link": "shopify://collections/all",
                 "submenu": "",
+                "asset_icon": "heart-plus.svg",
                 "text_color": "#e10600",
                 "highlight_titles": "",
                 "highlight_color": "",
