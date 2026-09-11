@@ -461,7 +461,7 @@
 
   {% if section.settings.show_location_search %}
     <div class="header__location-search-mobile">
-      {% render 'header-location-search', placeholder: section.settings.location_search_placeholder, link: section.settings.location_search_link, mobile: true %}
+      {% render 'header-location-search', placeholder: section.settings.location_search_placeholder, link: section.settings.location_search_link, mobile: 'true' %}
     </div>
   {% endif %}
 
@@ -1187,7 +1187,7 @@
   /* Header container styling - rounded corners and shadow */
   .header__row--top .header__columns {
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.02);
     overflow: visible;
   }
 
@@ -1367,10 +1367,6 @@
     }
   }
 
-  /* Figma gap: utility icon gap */
-  .header__actions {
-    gap: 16px;
-  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
